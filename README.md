@@ -32,3 +32,19 @@ Vale revisar essas 5 decisões com o responsável do projeto antes de publicar e
 ## Publicar
 
 É um site estático — basta subir `index.html` e a pasta `assets/` para o subdomínio escolhido. Nenhuma dependência de build.
+
+### Deploy no Cloudflare
+
+O site está publicado no Cloudflare Workers (assets estáticos):
+
+**https://site-sigacerto-logistica.ronaldo-90b.workers.dev**
+
+Para gerar um novo deploy após alterações:
+
+```
+npx wrangler deploy
+```
+
+`wrangler.jsonc` define o projeto (`site-sigacerto-logistica`) e `assets.directory: "."`. O arquivo `.assetsignore` impede que `.git/`, `ref/`, `README.md` e arquivos de configuração sejam publicados junto com o site.
+
+Para apontar um domínio próprio (ex.: `logistica.sigacerto.com.br`), adicione um domínio customizado ao Worker pelo painel da Cloudflare (Workers & Pages → site-sigacerto-logistica → Settings → Domains & Routes) ou via `wrangler`.
