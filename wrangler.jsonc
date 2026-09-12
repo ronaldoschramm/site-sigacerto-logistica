@@ -8,5 +8,8 @@
   "assets": {
     "directory": "."
   },
-  "workers_dev": true
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "logistica.sigacerto.com.br", "custom_domain": true, "zone_name": "sigacerto.com.br" }
+  ]
 }
