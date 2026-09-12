@@ -35,9 +35,10 @@ Vale revisar essas 5 decisões com o responsável do projeto antes de publicar e
 
 ### Deploy no Cloudflare
 
-O site está publicado no Cloudflare Workers (assets estáticos):
+O site está publicado no Cloudflare Workers (assets estáticos), na conta que administra a zona `sigacerto.com.br` (login `ronaldo.schramm@yahoo.com.br`):
 
-**https://site-sigacerto-logistica.ronaldo-90b.workers.dev**
+**https://logistica.sigacerto.com.br** (domínio definitivo)
+**https://site-sigacerto-logistica.ronaldo-schramm.workers.dev** (fallback do workers.dev)
 
 Para gerar um novo deploy após alterações:
 
@@ -45,6 +46,4 @@ Para gerar um novo deploy após alterações:
 npx wrangler deploy
 ```
 
-`wrangler.jsonc` define o projeto (`site-sigacerto-logistica`) e `assets.directory: "."`. O arquivo `.assetsignore` impede que `.git/`, `ref/`, `README.md` e arquivos de configuração sejam publicados junto com o site.
-
-Para apontar um domínio próprio (ex.: `logistica.sigacerto.com.br`), adicione um domínio customizado ao Worker pelo painel da Cloudflare (Workers & Pages → site-sigacerto-logistica → Settings → Domains & Routes) ou via `wrangler`.
+`wrangler.jsonc` define o projeto (`site-sigacerto-logistica`), `assets.directory: "."` e a rota de Custom Domain para `logistica.sigacerto.com.br` (exige Worker e zona na mesma conta Cloudflare). O arquivo `.assetsignore` impede que `.git/`, `ref/`, `README.md` e arquivos de configuração sejam publicados junto com o site.
