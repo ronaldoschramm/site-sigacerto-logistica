@@ -1,19 +1,26 @@
 # Hub de Logística — Sigacerto Technology
 
-Página principal (hub) que une o **Rastboy** e o **RotaCerta Roteirizador** em um único ponto de entrada, conforme especificado em [`projeto-hub-logistica (1).md`](./projeto-hub-logistica%20%281%29.md).
+Site completo de logística da Sigacerto Technology: uma página hub que une o **Rastboy** e o **RotaCerta Roteirizador**, com as páginas dos dois produtos hospedadas aqui mesmo — tudo dentro de `logistica.sigacerto.com.br`, sem o visitante sair do site.
 
-As páginas de produto (`sigacerto.com.br/rastboy` e `sigacerto.com.br/rotacerta-roteirizador`) **não foram alteradas** — este repositório contém apenas a nova página de hub, pensada para ser publicada em um subdomínio (ex.: `logistica.sigacerto.com.br`).
+Conteúdo baseado em [`projeto-hub-logistica (1).md`](./projeto-hub-logistica%20%281%29.md). As páginas originais em `sigacerto.com.br/rastboy` e `sigacerto.com.br/rotacerta-roteirizador` **não foram alteradas** — as versões aqui são cópias fiéis do conteúdo (mesmo texto, preços, FAQ e imagens), só com o cabeçalho e rodapé trocados para o menu único deste site (Logística · Rastboy · RotaCerta · Contato), para que a navegação nunca saia do domínio `logistica.sigacerto.com.br`.
 
 ## Estrutura
 
 ```
-index.html              → a página do hub
-assets/css/style.css    → design system da Sigacerto Technology (copiado do site principal, sem alterações)
-assets/js/main.js       → scripts compartilhados (scroll do header, menu mobile, reveal on scroll)
-assets/img/logo/        → logo Sigacerto Technology
-assets/img/rastboy/     → print do painel do Rastboy (reaproveitado da página existente)
-assets/img/rotacerta/   → prints dos painéis do RotaCerta (reaproveitados da página existente)
+index.html                          → hub (home)
+rastboy.html                        → página do Rastboy (serve em /rastboy)
+rotacerta-roteirizador.html         → página do RotaCerta (serve em /rotacerta-roteirizador)
+assets/css/style.css                → design system da Sigacerto Technology (copiado do site principal, sem alterações)
+assets/js/main.js                   → scripts compartilhados (scroll do header, menu mobile, reveal on scroll)
+assets/img/logo/                    → logo Sigacerto Technology
+assets/img/rastboy/                 → print do painel do Rastboy usado no card do hub
+assets/img/rotacerta/               → prints dos painéis do RotaCerta usados nos cards do hub
+assets/img/rotacerta-roteirizador/  → prints usados dentro da própria página do RotaCerta
 ```
+
+As URLs sem `.html` (ex. `/rastboy`) funcionam pelo comportamento padrão do Cloudflare Workers (`auto-trailing-slash`): uma requisição a `/rastboy` serve `rastboy.html` diretamente, sem redirecionamento.
+
+Links para páginas institucionais que não existem neste site (Consultoria, Academia, "Ver todas as soluções", ERP, CRM) continuam apontando para `sigacerto.com.br`, já que são conteúdo fora do escopo de logística. Só os links entre hub/Rastboy/RotaCerta e o item "Contato" (que rola até a seção de fala com a Sigacerto no rodapé do hub) ficam internos.
 
 > Durante a construção deste hub, cópias de referência do site em produção (HTML/CSS/JS de `sigacerto.com.br`) foram baixadas localmente em `ref/` para consulta — essa pasta é ignorada pelo git e não faz parte do site publicado.
 
@@ -25,9 +32,11 @@ O documento original deixou 5 decisões em aberto. Para não travar a entrega, s
 2. **Nome do hub**: sem marca própria — apresentado como página institucional "Sigacerto Technology · Logística de última milha", sem inventar um nome de produto guarda-chuva.
 3. **WhatsApp da seção final**: usei o número institucional já usado em "Fale com um Consultor" no site principal ((11) 96602-1768) como WhatsApp de triagem no header e no CTA final. Cada card de produto continua linkando para a própria página (que tem o WhatsApp específico de cada um — o Rastboy usa (11) 99346-8445).
 4. **Formulário de contato**: não incluí formulário próprio no hub — o direcionamento é sempre para WhatsApp ou para a página do produto, como o próprio Rastboy já faz.
-5. **Navegação do site principal**: o hub **não foi adicionado ao menu do site principal** (`sigacerto.com.br`), já que isso exigiria alterar páginas fora do escopo deste repositório. O header do hub linka para Rastboy, RotaCerta, Soluções e Contato do site principal; o rodapé reaproveita a navegação institucional (Consultoria, Academia, Soluções, Contato) apontando para `sigacerto.com.br`.
+5. **Navegação do site principal**: o hub **não foi adicionado ao menu do site principal** (`sigacerto.com.br`), já que isso exigiria alterar páginas fora do escopo deste repositório.
 
 Vale revisar essas 5 decisões com o responsável do projeto antes de publicar em produção.
+
+**Atualização**: a pedido, o Rastboy e o RotaCerta passaram a ser hospedados dentro deste mesmo site (veja "Estrutura" acima), com um único menu (Logística · Rastboy · RotaCerta · Contato) em todas as páginas — os links entre eles não saem mais para `sigacerto.com.br`.
 
 ## Publicar
 

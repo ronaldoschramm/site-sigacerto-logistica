@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RotaCerta Roteirizador — Roteirização de Cargas para Construção e Transportadoras | Sigacerto Technology</title>
+<meta name="description" content="RotaCerta: o roteirizador feito para depósitos de material de construção e transportadoras. Geolocalização de obra sem endereço formal, tempo de descarga por tipo de material, rastreamento em tempo real e integração com o seu ERP. Fale com um consultor.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://logistica.sigacerto.com.br/rotacerta-roteirizador">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sigacerto Technology">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="RotaCerta Roteirizador — Roteirização de Cargas para Construção e Transportadoras">
+<meta property="og:description" content="Geolocalização de obra sem endereço formal, tempo de descarga por tipo de material, rastreamento em tempo real e integração nativa com o seu ERP.">
+<meta property="og:url" content="https://logistica.sigacerto.com.br/rotacerta-roteirizador">
+<meta property="og:image" content="https://logistica.sigacerto.com.br/assets/img/logo/full.png">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RotaCerta Roteirizador — Roteirização de Cargas para Construção e Transportadoras">
+<meta name="twitter:description" content="Geolocalização de obra sem endereço formal, tempo de descarga por tipo de material e integração nativa com o seu ERP.">
+<meta name="twitter:image" content="https://logistica.sigacerto.com.br/assets/img/logo/full.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo/icon.png">
+<style>
+  .rrx-badges { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 28px; }
+  .rrx-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border-strong);
+    padding: 9px 16px;
+    border-radius: var(--radius-full);
+  }
+  .rrx-badge svg { width: 15px; height: 15px; color: var(--accent-3); flex-shrink: 0; }
+
+  .rrx-pain-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 26px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: rgba(224, 52, 52, 0.04);
+  }
+  .rrx-pain-card .rrx-x {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(224, 52, 52, 0.12);
+    border: 1px solid rgba(224, 52, 52, 0.35);
+    color: #e04b4b;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rrx-pain-card .rrx-x svg { width: 18px; height: 18px; }
+  .rrx-pain-card p { color: var(--text); font-size: 0.98rem; font-weight: 500; }
+
+  .rrx-feature-row {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    margin-bottom: 80px;
+  }
+  .rrx-feature-row.reverse { flex-direction: row-reverse; }
+  .rrx-feature-media { flex: 1 1 46%; min-width: 0; }
+  .rrx-feature-media figure {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin: 0;
+    padding: 3px;
+    background: linear-gradient(155deg, var(--accent-1) 0%, var(--accent-2) 55%, var(--accent-3) 100%);
+    box-shadow:
+      0 24px 60px rgba(0,0,0,0.45),
+      0 0 0 1px rgba(255,255,255,0.06) inset,
+      0 0 0 1px rgba(0,0,0,0.25);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .rrx-feature-media figure:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 32px 74px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(255,255,255,0.09) inset,
+      0 0 46px rgba(34,211,238,0.22);
+  }
+  .rrx-feature-media .rrx-frame-shot { overflow: hidden; background: var(--surface); }
+  .rrx-feature-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.6s ease;
+  }
+  .rrx-feature-media figure:hover img { transform: scale(1.035); }
+  .rrx-feature-media figcaption {
+    padding: 12px 18px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+  .rrx-feature-text { flex: 1 1 46%; min-width: 0; }
+  .rrx-feature-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: #050810;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .rrx-feature-text h3 { font-size: 1.4rem; margin-bottom: 12px; }
+  .rrx-feature-text p { color: var(--text-muted); font-size: 0.98rem; }
+  .rrx-feature-text ul { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+  .rrx-feature-text li {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 0.9rem; color: var(--text-muted);
+  }
+  .rrx-feature-text li svg { flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; color: var(--accent-3); }
+
+  @media (max-width: 900px) {
+    .rrx-feature-row, .rrx-feature-row.reverse { flex-direction: column; gap: 28px; margin-bottom: 56px; }
+    /* Prints de tela de celular (retrato, 750x1500) ficam gigantes e criam
+       um vão escuro enorme se esticados na largura toda da coluna no mobile. */
+    .rrx-feature-media--portrait { max-width: 260px; margin: 0 auto; }
+  }
+
+  .rrx-video-frame {
+    aspect-ratio: 16 / 9;
+    max-width: 880px;
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    border: 1.5px dashed var(--border-strong);
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    text-align: center;
+    padding: 40px;
+  }
+  .rrx-video-frame .rrx-play {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--gradient-soft);
+    border: 1px solid rgba(34,211,238,0.35);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rrx-video-frame .rrx-play svg { width: 26px; height: 26px; color: var(--accent-2); }
+  .rrx-video-frame h3 { font-size: 1.15rem; margin: 0; }
+  .rrx-video-frame p { color: var(--text-muted); font-size: 0.9rem; max-width: 420px; }
+
+  .rrx-recap-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+  }
+  .rrx-recap-item .rrx-recap-icon {
+    flex-shrink: 0;
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--gradient-soft);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent-2);
+  }
+  .rrx-recap-item .rrx-recap-icon svg { width: 18px; height: 18px; }
+  .rrx-recap-item h4 { font-size: 0.95rem; margin-bottom: 4px; }
+  .rrx-recap-item p { font-size: 0.85rem; color: var(--text-muted); }
+
+  .rrx-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .rrx-compare-col { background: var(--bg-alt); padding: 40px 36px; }
+  .rrx-compare-col.win { background: linear-gradient(180deg, rgba(52,224,161,0.08), var(--bg-alt) 65%); }
+  .rrx-compare-col h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .rrx-compare-col h4 svg { width: 20px; height: 20px; flex-shrink: 0; }
+  .rrx-compare-col ul { display: flex; flex-direction: column; gap: 16px; }
+  .rrx-compare-col li { display: flex; gap: 10px; font-size: 0.93rem; color: var(--text-muted); align-items: flex-start; }
+  .rrx-compare-col li svg { flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; }
+  .rrx-compare-col.lose li svg { color: #e04b4b; }
+  .rrx-compare-col.win li svg { color: var(--accent-3); }
+  @media (max-width: 900px) {
+    .rrx-compare { grid-template-columns: 1fr; }
+  }
+
+  .rrx-faq-item {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .rrx-faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .rrx-faq-item summary::-webkit-details-marker { display: none; }
+  .rrx-faq-icon { flex-shrink: 0; color: var(--accent-2); transition: transform 0.2s ease; }
+  .rrx-faq-icon svg { width: 20px; height: 20px; }
+  .rrx-faq-item[open] .rrx-faq-icon { transform: rotate(45deg); }
+  .rrx-faq-item p { padding: 0 24px 22px; color: var(--text-muted); font-size: 0.95rem; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://logistica.sigacerto.com.br/" },
+        { "@type": "ListItem", "position": 2, "name": "RotaCerta Roteirizador", "item": "https://logistica.sigacerto.com.br/rotacerta-roteirizador" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "RotaCerta Roteirizador",
+      "url": "https://logistica.sigacerto.com.br/rotacerta-roteirizador",
+      "description": "Roteirizador de cargas para depósitos de material de construção e transportadoras: geolocalização de obra sem endereço formal, tempo de descarga por tipo de material, rastreamento em tempo real e integração nativa com ERP.",
+      "areaServed": { "@type": "Country", "name": "Brasil" },
+      "provider": { "@type": "Organization", "name": "Sigacerto Technology", "url": "https://sigacerto.com.br/" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Preciso trocar de ERP para usar o RotaCerta?", "acceptedAnswer": { "@type": "Answer", "text": "Não. O RotaCerta se conecta ao ERP que a sua empresa já usa — TOTVS Protheus, WinThor, Conta Azul, Bling, Tiny, Senior, Saurus e outros — via Webhooks e REST API." } },
+        { "@type": "Question", "name": "O motorista precisa instalar algum aplicativo?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Tudo roda direto no navegador do celular, tanto para o motorista quanto para o cliente que acompanha a entrega — sem instalar nada e sem senha." } },
+        { "@type": "Question", "name": "Funciona para obras sem endereço ou CEP definido?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. O RotaCerta usa geolocalização por ponto de referência: o pino é marcado direto no mapa e fica salvo para as próximas entregas no mesmo lugar." } },
+        { "@type": "Question", "name": "Preciso instalar rastreador ou hardware no caminhão?", "acceptedAnswer": { "@type": "Answer", "text": "Não. O rastreamento usa apenas o GPS do smartphone do motorista, sem custo com hardware proprietário." } },
+        { "@type": "Question", "name": "Quanto custa o RotaCerta?", "acceptedAnswer": { "@type": "Answer", "text": "O investimento depende do tamanho da frota e da complexidade da integração com o seu ERP. Um consultor apresenta a proposta depois de entender a sua operação." } },
+        { "@type": "Question", "name": "Funciona para transportadoras pequenas, com poucos caminhões?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. O RotaCerta atende desde pequenas transportadoras e depósitos até operações de médio porte com múltiplos veículos." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo/icon.png" alt="Sigacerto Technology" width="64" height="64">
+      <span>Sigacerto Technology</span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Logística</a>
+      <a href="rastboy">Rastboy</a>
+      <a href="rotacerta-roteirizador" class="active">RotaCerta</a>
+      <a href="index.html#cta-final">Contato</a>
+      <a href="https://wa.me/5511966021768?text=Ol%C3%A1!%20Quero%20conhecer%20o%20RotaCerta%20Roteirizador%20para%20a%20minha%20opera%C3%A7%C3%A3o." target="_blank" rel="noopener" class="nav-cta">Fale com um Consultor</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://wa.me/5511966021768?text=Ol%C3%A1!%20Quero%20conhecer%20o%20RotaCerta%20Roteirizador%20para%20a%20minha%20opera%C3%A7%C3%A3o." target="_blank" rel="noopener" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.12.11-1.8-.12-.42-.14-.96-.32-1.65-.62-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.05.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+        Fale com um Consultor
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="bg-grid"></div>
+    <div class="container">
+      <span class="eyebrow">RotaCerta · Roteirizador de Cargas</span>
+      <h1>O roteirizador que acaba com <span class="text-gradient">motorista perdido, cliente ligando toda hora e ERP desatualizado</span></h1>
+      <p>O RotaCerta foi criado para depósitos de material de construção e transportadoras de pequeno e médio porte — não para entrega de encomenda urbana. Geolocalização de obra sem endereço formal, tempo de descarga calculado pelo tipo de material, rastreamento em tempo real por link e integração automática com o ERP que a sua empresa já usa.</p>
+      <div class="hero-actions" style="justify-content:center; margin-top:36px;">
+        <a href="https://wa.me/5511966021768?text=Ol%C3%A1!%20Quero%20conhecer%20o%20RotaCerta%20Roteirizador%20para%20a%20minha%20operação." target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.12.11-1.8-.12-.42-.14-.96-.32-1.65-.62-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.05.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+          Quero o RotaCerta na minha operação
+        </a>
+        <a href="#telas" class="btn btn-ghost btn-lg">
+          Ver o sistema funcionando
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+      </div>
+      <div class="rrx-badges" data-reveal>
+        <span class="rrx-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sem app para o motorista instalar</span>
+        <span class="rrx-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sem hardware ou rastreador extra</span>
+        <span class="rrx-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Integração nativa com o seu ERP</span>
+        <span class="rrx-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Implantação com suporte da Sigacerto Technology</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DORES -->
+  <section class="section-tight" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">O problema que resolvemos</span>
+        <h2>Se a sua operação vive algum desses cenários, o RotaCerta resolve</h2>
+        <p>Depósitos de material de construção e transportadoras de pequeno e médio porte não são bem atendidos por roteirizadores genéricos, feitos para entrega de encomenda em endereço urbano.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="rrx-pain-card">
+          <span class="rrx-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Motorista perdido em obra ou loteamento sem CEP nem número definido.</p>
+        </div>
+        <div class="rrx-pain-card">
+          <span class="rrx-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Cliente ligando toda hora perguntando "cadê minha carga".</p>
+        </div>
+        <div class="rrx-pain-card">
+          <span class="rrx-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Tempo de descarga igual pra qualquer material — areia, cimento ou esquadria.</p>
+        </div>
+        <div class="rrx-pain-card">
+          <span class="rrx-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Roteiro feito na mão ou no grupo do WhatsApp, sem otimização nenhuma.</p>
+        </div>
+        <div class="rrx-pain-card">
+          <span class="rrx-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Carga aberta pegando chuva porque ninguém reorganizou a rota a tempo.</p>
+        </div>
+        <div class="rrx-pain-card">
+          <span class="rrx-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Escritório digitando de novo no ERP o que o motorista já entregou.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TELAS DO SISTEMA -->
+  <section class="section" id="telas" style="scroll-margin-top:100px;">
+    <div class="container">
+      <div class="section-head center" data-reveal>
+        <span class="eyebrow">Funcionalidades na prática</span>
+        <h2>Da criação da rota até o relatório de desempenho</h2>
+        <p>Quatro telas do RotaCerta que mostram a jornada completa: operador, cliente, motorista e gestão.</p>
+      </div>
+
+      <div class="rrx-feature-row" data-reveal>
+        <div class="rrx-feature-media">
+          <figure>
+            <div class="rrx-frame-shot">
+              <img src="assets/img/rotacerta-roteirizador/frota-mapa-tempo-real.jpg" alt="Painel do operador do RotaCerta com cadastro de pedidos por tipo de material e mapa de motoristas ativos em tempo real" loading="lazy" width="1500" height="1000">
+            </div>
+            <figcaption>Painel do operador — pedidos/paradas e mapa de motoristas ativos</figcaption>
+          </figure>
+        </div>
+        <div class="rrx-feature-text">
+          <span class="rrx-feature-num">1</span>
+          <h3>Painel do Operador: da nota fiscal ao mapa em segundos</h3>
+          <p>Cada parada é cadastrada com telefone, endereço, código do cliente no ERP e <strong>tipo de material</strong> — é esse dado que define o tempo de descarga calculado automaticamente pelo sistema. Com um clique em "Otimizar ordem", o RotaCerta reorganiza a sequência de entregas; com "Criar rota e gerar links", os links de acompanhamento saem prontos para motorista e cliente.</p>
+          <p>Logo abaixo, o mapa "Motoristas ativos agora" mostra toda a frota em tempo real, sem precisar abrir tela por tela.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Tempo de descarga calculado pelo tipo de material</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Otimização de rota com um clique</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mapa com toda a frota ativa, em tempo real</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rrx-feature-row reverse" data-reveal>
+        <div class="rrx-feature-media rrx-feature-media--portrait">
+          <figure>
+            <div class="rrx-frame-shot">
+              <img src="assets/img/rotacerta-roteirizador/cliente-acompanha-entrega.jpg" alt="Tela do cliente acompanhando a entrega em tempo real pelo celular, com posição na fila, previsão de chegada e botão Estou pronto para receber" loading="lazy" width="750" height="1500">
+            </div>
+            <figcaption>Tela do cliente — acompanhamento da entrega, sem app e sem login</figcaption>
+          </figure>
+        </div>
+        <div class="rrx-feature-text">
+          <span class="rrx-feature-num">2</span>
+          <h3>O cliente acompanha a entrega por um link, sem instalar nada</h3>
+          <p>Assim que o caminhão sai, o cliente recebe um link individual da entrega — sem senha e sem cadastro. A tela mostra a posição na fila ("Você é o próximo!"), a previsão de chegada já considerando o trânsito da rota, e um mapa ao vivo com o caminhão se aproximando.</p>
+          <p>Quando o material está prestes a chegar, um botão único — <strong>"Estou pronto para receber"</strong> — avisa o motorista que a obra está preparada para a descarga.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Link individual por entrega, sem app nem senha</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Previsão de chegada considerando o trânsito</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Botão "Descarregue aqui" avisa o motorista na hora</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rrx-feature-row" data-reveal>
+        <div class="rrx-feature-media rrx-feature-media--portrait">
+          <figure>
+            <div class="rrx-frame-shot">
+              <img src="assets/img/rotacerta-roteirizador/motorista-app-entrega.jpg" alt="App do motorista do RotaCerta com navegação até a próxima parada e lista de paradas com botão marcar como entregue" loading="lazy" width="750" height="1500">
+            </div>
+            <figcaption>App do motorista — navegação e paradas da rota</figcaption>
+          </figure>
+        </div>
+        <div class="rrx-feature-text">
+          <span class="rrx-feature-num">3</span>
+          <h3>O motorista navega até o pino exato da obra</h3>
+          <p>Direto no navegador do celular, sem instalar aplicativo: o motorista toca em "Navegar até a próxima parada" e é guiado até o ponto marcado no mapa — mesmo quando a obra não tem endereço formal. A lista de paradas fica sempre visível, com o status de cada entrega.</p>
+          <p>Ao chegar e descarregar, basta tocar em <strong>"Marcar como entregue"</strong> — o status muda na hora, tanto para o cliente quanto para o painel do operador.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Navegação direto no navegador, sem instalar app</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Rota com múltiplas paradas, na ordem definida</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Confirmação de entrega em um toque</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rrx-feature-row reverse" data-reveal>
+        <div class="rrx-feature-media">
+          <figure>
+            <div class="rrx-frame-shot">
+              <img src="assets/img/rotacerta-roteirizador/relatorio-desempenho-motorista.jpg" alt="Relatório de desempenho por motorista no painel do estabelecimento do RotaCerta, com rotas concluídas, entregues, canceladas e tempo médio de rota" loading="lazy" width="1919" height="768">
+            </div>
+            <figcaption>Painel do estabelecimento — relatório de desempenho por motorista</figcaption>
+          </figure>
+        </div>
+        <div class="rrx-feature-text">
+          <span class="rrx-feature-num">4</span>
+          <h3>Relatório de desempenho por motorista, sem hardware extra</h3>
+          <p>No Painel do Estabelecimento, a aba <strong>Desempenho</strong> reúne, por motorista e por período, as rotas concluídas, entregas e cancelamentos, o tempo médio de reação (da criação da rota até o motorista sair de fato) e o tempo médio de rota (da saída até a conclusão).</p>
+          <p>Tudo calculado a partir de dados que o sistema já registra normalmente — sem depender de sensores de veículo ou hardware proprietário.</p>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Rotas concluídas, entregues e canceladas por motorista</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Tempo médio de reação e tempo médio de rota</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Filtro por período, sem custo com hardware extra</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VÍDEO -->
+  <section class="section-tight" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Em vídeo</span>
+        <h2>Demonstração completa no nosso canal do YouTube</h2>
+        <p>Veja o RotaCerta Roteirizador do início ao fim — do cadastro da rota até a confirmação de entrega — direto do canal da Sigacerto Technology.</p>
+      </div>
+      <div class="rrx-video-frame" style="padding:0; border-style:solid;">
+        <iframe style="width:100%; height:100%; border:0; border-radius:var(--radius-lg);" src="https://www.youtube.com/embed/kg2aDQE6BiQ" title="RotaCerta Roteirizador — demonstração" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECAP DAS INOVAÇÕES -->
+  <section class="section-tight" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Por trás dessas telas</span>
+        <h2>6 inovações que sustentam o RotaCerta</h2>
+        <p>Cada tela que você viu acima é a ponta visível dessas inovações.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="rrx-recap-item">
+          <span class="rrx-recap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div><h4>Geolocalização de obra sem endereço formal</h4><p>Pino salvo no mapa para a próxima entrega no mesmo lugar.</p></div>
+        </div>
+        <div class="rrx-recap-item">
+          <span class="rrx-recap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg></span>
+          <div><h4>Tempo de descarga por tipo de material</h4><p>Cálculo automático a partir dos itens da nota fiscal.</p></div>
+        </div>
+        <div class="rrx-recap-item">
+          <span class="rrx-recap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Z"/></svg></span>
+          <div><h4>WhatsApp com "Descarregue aqui"</h4><p>Cliente avisado e rota recalculada sem parar a operação.</p></div>
+        </div>
+        <div class="rrx-recap-item">
+          <span class="rrx-recap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span>
+          <div><h4>Roteirização preditiva por trânsito e clima</h4><p>Cargas abertas priorizadas quando há previsão de chuva.</p></div>
+        </div>
+        <div class="rrx-recap-item">
+          <span class="rrx-recap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" y1="12" x2="16" y2="12"/></svg></span>
+          <div><h4>Barramento nativo com o seu ERP</h4><p>Nota fiscal vira rota e entrega concluída atualiza o ERP sozinho.</p></div>
+        </div>
+        <div class="rrx-recap-item">
+          <span class="rrx-recap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/><circle cx="12" cy="8" r="7"/></svg></span>
+          <div><h4>Gamificação e telemetria leve</h4><p>Relatório de desempenho por motorista, sem hardware extra.</p></div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:32px;">
+        <a href="#comparativo" class="btn btn-ghost">
+          Ver o comparativo com roteirizadores genéricos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARATIVO -->
+  <section class="section-tight" id="comparativo" style="scroll-margin-top:100px;" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">A diferença no dia a dia</span>
+        <h2>Roteirizador genérico vs. RotaCerta</h2>
+      </div>
+      <div class="rrx-compare">
+        <div class="rrx-compare-col lose">
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Roteirizador genérico</h4>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Motorista perdido em obra sem endereço formal</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Tempo de parada igual para qualquer carga</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Cliente sem saber quando o material chega</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Carga aberta pega chuva porque a rota não muda</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Escritório exportando planilha para o ERP</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Nenhuma visibilidade sobre a frota</li>
+          </ul>
+        </div>
+        <div class="rrx-compare-col win">
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Com RotaCerta</h4>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Pino exato da obra, salvo para a próxima entrega</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Tempo de descarga calculado pelo tipo de material</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Cliente recebe WhatsApp e confirma "descarregue aqui"</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Rota se reorganiza sozinha antes da chuva chegar</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> ERP atualizado automaticamente, sem digitação</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Motorista pontuado por pontualidade e economia</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-tight" id="faq" style="scroll-margin-top:100px;" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Perguntas frequentes</span>
+        <h2>Ainda com dúvidas sobre o RotaCerta?</h2>
+      </div>
+      <div style="max-width:760px; margin:0 auto;">
+        <details class="rrx-faq-item">
+          <summary>Preciso trocar de ERP para usar o RotaCerta?<span class="rrx-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p>Não. O RotaCerta se conecta ao ERP que a sua empresa já usa — TOTVS Protheus, WinThor, Conta Azul, Bling, Tiny, Senior, Saurus e outros — via Webhooks e REST API. A nota fiscal emitida já cai na fila de roteirização, e a entrega concluída atualiza o ERP sozinha.</p>
+        </details>
+        <details class="rrx-faq-item">
+          <summary>O motorista precisa instalar algum aplicativo?<span class="rrx-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p>Não. Tudo roda direto no navegador do celular, tanto para o motorista quanto para o cliente que acompanha a entrega — sem instalar nada e sem senha.</p>
+        </details>
+        <details class="rrx-faq-item">
+          <summary>Funciona para obras sem endereço ou CEP definido?<span class="rrx-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p>Sim. O RotaCerta usa geolocalização por ponto de referência: o pino é marcado direto no mapa — "portão lateral do Lote 12" — e fica salvo para as próximas entregas no mesmo lugar.</p>
+        </details>
+        <details class="rrx-faq-item">
+          <summary>Preciso instalar rastreador ou hardware no caminhão?<span class="rrx-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p>Não. O rastreamento usa apenas o GPS do smartphone do motorista, sem custo com hardware proprietário — inclusive o relatório de desempenho por motorista é gerado só com esses dados.</p>
+        </details>
+        <details class="rrx-faq-item">
+          <summary>Quanto custa o RotaCerta?<span class="rrx-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p>O investimento depende do tamanho da frota e da complexidade da integração com o seu ERP. Fale com um consultor: em uma conversa rápida entendemos a sua operação e apresentamos uma proposta sob medida.</p>
+        </details>
+        <details class="rrx-faq-item">
+          <summary>Funciona para transportadoras pequenas, com poucos caminhões?<span class="rrx-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p>Sim. O RotaCerta atende desde pequenas transportadoras e depósitos até operações de médio porte com múltiplos veículos.</p>
+        </details>
+        <details class="rrx-faq-item">
+          <summary>Quanto tempo leva para implantar?<span class="rrx-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></summary>
+          <p>Depende da integração necessária com o seu ERP. O diagnóstico inicial com um consultor já deixa claro o prazo estimado para colocar a sua frota rodando no RotaCerta.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="section-tight" id="fale-conosco" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Pronto para roteirizar suas entregas?</span>
+        <h2>Leve o RotaCerta para o seu depósito ou transportadora</h2>
+        <p>Preencha o formulário ou fale agora pelo WhatsApp — um consultor entende a sua operação e mostra como o RotaCerta se encaixa no seu ERP.</p>
+      </div>
+
+      <div class="grid grid-2" style="gap:40px; align-items:start;">
+
+        <div class="card" data-reveal style="padding:44px;">
+          <h3 style="font-size:1.4rem; margin-bottom:8px;">Solicitar contato</h3>
+          <p style="color:var(--text-muted); margin-bottom:28px;">Um consultor entra em contato para apresentar o RotaCerta para a sua operação.</p>
+
+          <form id="contact-form" novalidate>
+            <input type="text" name="website" id="website" autocomplete="off" tabindex="-1" style="position:absolute; left:-9999px;" aria-hidden="true">
+            <input type="hidden" name="mensagem" value="Interesse no RotaCerta Roteirizador. Solicito contato de um consultor.">
+            <div class="form-field">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+            </div>
+            <div class="form-field">
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Depósito ou transportadora">
+            </div>
+            <div class="form-field">
+              <label for="telefone">Telefone</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(11) 90000-0000" required>
+            </div>
+            <div class="form-field">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="voce@empresa.com.br" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Solicitar contato</button>
+            <p class="form-note">Ao enviar, você concorda em ser contatado pela equipe da Sigacerto Technology.</p>
+
+            <div class="form-success" id="form-success">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Solicitação recebida! Em breve entraremos em contato.
+            </div>
+            <div class="form-error" id="form-error">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Não foi possível enviar sua solicitação. Tente novamente ou fale conosco pelo WhatsApp.
+            </div>
+          </form>
+        </div>
+
+        <div data-reveal style="display:flex; flex-direction:column; gap:28px;">
+          <a href="https://wa.me/5511966021768?text=Ol%C3%A1!%20Quero%20implantar%20o%20RotaCerta%20Roteirizador%20na%20minha%20empresa." target="_blank" rel="noopener" class="cta-final" style="padding:40px; text-align:left; display:block;">
+            <span class="eyebrow">Resposta mais rápida</span>
+            <h2 style="font-size:1.6rem; margin-top:14px;">Fale agora pelo WhatsApp</h2>
+            <p style="margin-top:10px;">Conte como funciona a sua operação hoje e veja como o RotaCerta se encaixa no seu ERP.</p>
+            <span class="btn btn-whatsapp btn-lg" style="margin-top:24px;">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.12.11-1.8-.12-.42-.14-.96-.32-1.65-.62-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.05.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+              Iniciar conversa
+            </span>
+          </a>
+
+          <div class="contact-info-card">
+            <div class="contact-info-row">
+              <span class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              <div><h4>WhatsApp</h4><a href="https://wa.me/5511966021768" target="_blank" rel="noopener">(11) 96602-1768</a></div>
+            </div>
+            <div class="contact-info-row">
+              <span class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
+              <div><h4>E-mail</h4><a href="/cdn-cgi/l/email-protection#84e7ebeaf0e5f0ebc4f7ede3e5e7e1f6f0ebaae7ebe9aae6f6"><span class="__cf_email__" data-cfemail="45262a2b3124312a05362c2224262037312a6b262a286b2737">[email&#160;protected]</span></a></div>
+            </div>
+            <div class="contact-info-row">
+              <span class="ci-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+              <div><h4>Horário de atendimento</h4><p>Segunda a sexta, das 9h às 18h</p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo/icon.png" alt="Sigacerto Technology" width="64" height="64">
+          <span>Sigacerto Technology</span>
+        </a>
+        <p>Consultoria em projetos de tecnologia para pequenos e médios empreendedores que querem profissionalizar e escalar o negócio.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="https://sigacerto.com.br/" target="_blank" rel="noopener">Início</a></li>
+          <li><a href="https://sigacerto.com.br/consultoria" target="_blank" rel="noopener">Consultoria</a></li>
+          <li><a href="https://sigacerto.com.br/academia" target="_blank" rel="noopener">Academia (todos os cursos)</a></li>
+          <li><a href="https://sigacerto.com.br/contato" target="_blank" rel="noopener">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Logística</h4>
+        <ul>
+          <li><a href="rastboy">Rastboy — Delivery de comida</a></li>
+          <li><a href="rotacerta-roteirizador" class="active">RotaCerta — Construção e transportadoras</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Soluções</h4>
+        <ul>
+          <li><a href="https://sigacerto.com.br/solucoes" target="_blank" rel="noopener">Ver todas as soluções</a></li>
+          <li><a href="https://sigacerto.com.br/erp-pdv" target="_blank" rel="noopener">ERP &amp; Gestão com PDV</a></li>
+          <li><a href="https://sigacerto.com.br/crm" target="_blank" rel="noopener">CRM Gerenciado em Nuvem</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5511966021768" target="_blank" rel="noopener">WhatsApp: (11) 96602-1768</a></li>
+          <li>Mairinque, SP — atendemos São Roque, Araçariguama, Itu e região</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-tagline">Tecnologia com propósito: transformar pequenos e médios negócios em empresas mais eficientes, organizadas e prontas para crescer.</p>
+      <p>&copy; <span id="rrx-year"></span> Sigacerto Technology. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>document.getElementById('rrx-year').textContent = new Date().getFullYear();</script>
+<a href="https://wa.me/5511966021768" target="_blank" rel="noopener" class="wa-float" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.12.11-1.8-.12-.42-.14-.96-.32-1.65-.62-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.05.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+</a>
+</body>
+</html>

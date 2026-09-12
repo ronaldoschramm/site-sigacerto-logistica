@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rastboy — Rastreamento de Motoboys em Tempo Real para Pizzarias | Sigacerto Technology</title>
+<meta name="description" content="Rastreie seus motoboys em tempo real, direto no navegador, sem instalar aplicativo. Acabe com o 'cadê meu pedido?' e ganhe a confiança dos seus clientes com o Rastboy, da Sigacerto Technology.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://logistica.sigacerto.com.br/rastboy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo/icon.png">
+<style>
+  /* Rastboy — estilos específicos desta landing page */
+  .rb-header .header-actions .btn span { display: inline; }
+
+  .rb-pain-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 26px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: rgba(224, 52, 52, 0.04);
+  }
+  .rb-pain-card .rb-x {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(224, 52, 52, 0.12);
+    border: 1px solid rgba(224, 52, 52, 0.35);
+    color: #e04b4b;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rb-pain-card .rb-x svg { width: 18px; height: 18px; }
+  .rb-pain-card p { color: var(--text); font-size: 0.98rem; font-weight: 500; }
+
+  .rb-benefit-col {
+    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 44px;
+  }
+  .rb-benefit-col.owner { border-color: rgba(91,108,255,0.35); }
+  .rb-benefit-col.customer { border-color: rgba(34,211,238,0.35); }
+  .rb-benefit-col .rb-tag {
+    display: inline-block;
+    color: var(--accent-2);
+    font-family: var(--font-display);
+    font-size: 12.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .rb-benefit-col h3 { font-size: 1.4rem; margin-top: 10px; }
+  .rb-benefit-col ul { margin-top: 26px; display: flex; flex-direction: column; gap: 18px; }
+  .rb-benefit-col li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.98rem; color: var(--text-muted); }
+  .rb-benefit-col li svg { flex-shrink: 0; width: 20px; height: 20px; color: var(--accent-3); margin-top: 2px; }
+
+  .rb-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .rb-compare-col { background: var(--bg-alt); padding: 40px 36px; }
+  .rb-compare-col.win { background: linear-gradient(180deg, rgba(52,224,161,0.08), var(--bg-alt) 65%); }
+  .rb-compare-col h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .rb-compare-col h4 svg { width: 20px; height: 20px; flex-shrink: 0; }
+  .rb-compare-col ul { display: flex; flex-direction: column; gap: 16px; }
+  .rb-compare-col li { display: flex; gap: 10px; font-size: 0.93rem; color: var(--text-muted); align-items: flex-start; }
+  .rb-compare-col li svg { flex-shrink: 0; width: 18px; height: 18px; margin-top: 2px; }
+  .rb-compare-col.lose li svg { color: #e04b4b; }
+  .rb-compare-col.win li svg { color: var(--accent-3); }
+
+  .rb-why-list { margin-top: 32px; display: flex; flex-direction: column; gap: 18px; }
+  .rb-why-list li { display: flex; gap: 14px; align-items: flex-start; }
+  .rb-why-list .rb-num {
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: #050810;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rb-why-list p { color: var(--text-muted); font-size: 1rem; padding-top: 4px; }
+  .rb-why-list strong { color: var(--text); }
+
+  .rb-price-wrap { max-width: 1180px; margin: 0 auto; }
+  .rb-price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; align-items: stretch; }
+  @media (max-width: 1024px) {
+    .rb-price-grid { grid-template-columns: 1fr; }
+  }
+  .rb-setup-box {
+    margin: -14px 0 22px;
+    padding: 14px 16px 16px;
+    background: linear-gradient(180deg, rgba(91,108,255,0.10), rgba(34,211,238,0.04));
+    border: 1px solid rgba(91,108,255,0.35);
+    border-radius: var(--radius-sm);
+  }
+  .rb-setup-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    background: rgba(34,211,238,0.14);
+    padding: 3px 9px;
+    border-radius: 999px;
+    margin-bottom: 9px;
+  }
+  .rb-setup-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .rb-setup-price small {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+  .rb-setup-caption {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .rb-setup-includes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .rb-setup-includes span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    padding: 4px 9px;
+    border-radius: 999px;
+  }
+  .rb-setup-includes svg { width: 13px; height: 13px; color: var(--accent-3); flex-shrink: 0; }
+  .rb-price-foot {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-faint);
+  }
+
+  .rb-trial {
+    margin-top: 28px;
+    padding: 28px;
+    border: 1px dashed rgba(34,211,238,0.45);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, rgba(34,211,238,0.07), transparent 60%);
+    text-align: center;
+  }
+  .rb-trial-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-2);
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .rb-trial-tag svg { width: 16px; height: 16px; }
+  .rb-trial h4 { font-size: 1.2rem; margin-top: 10px; }
+  .rb-trial p { color: var(--text-muted); font-size: 0.95rem; margin-top: 10px; }
+  .rb-trial p strong { color: var(--text); }
+  .rb-trial .btn { margin-top: 20px; }
+
+  .rb-badge-new {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--gradient-soft);
+    color: var(--accent-2);
+    border: 1px solid rgba(34,211,238,0.35);
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    margin-bottom: 14px;
+  }
+
+  .rb-faq-item {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .rb-faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .rb-faq-item summary::-webkit-details-marker { display: none; }
+  .rb-faq-icon { flex-shrink: 0; color: var(--accent-2); transition: transform 0.2s ease; }
+  .rb-faq-icon svg { width: 20px; height: 20px; }
+  .rb-faq-item[open] .rb-faq-icon { transform: rotate(45deg); }
+  .rb-faq-item p { padding: 0 24px 22px; color: var(--text-muted); font-size: 0.95rem; }
+
+  .rb-hero-shot {
+    position: relative;
+    max-width: 980px;
+    margin: 64px auto 0;
+  }
+  .rb-hero-shot::before {
+    content: "";
+    position: absolute;
+    inset: -60px 8% -10px;
+    background: radial-gradient(ellipse 70% 60% at 50% 30%, rgba(91,108,255,0.38), transparent 72%);
+    filter: blur(50px);
+    z-index: -1;
+  }
+  .rb-hero-shot-frame {
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--surface);
+    box-shadow: var(--shadow-card), 0 40px 90px -25px rgba(0,0,0,0.65);
+  }
+  .rb-hero-shot-bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 18px;
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border);
+  }
+  .rb-hero-shot-dot { width: 11px; height: 11px; border-radius: 50%; }
+  .rb-hero-shot-dot.red { background: #ff5f56; }
+  .rb-hero-shot-dot.yellow { background: #ffbd2e; }
+  .rb-hero-shot-dot.green { background: #27c93f; }
+  .rb-hero-shot-url {
+    margin-left: 12px;
+    font-family: var(--font-display);
+    font-size: 12.5px;
+    color: var(--text-faint);
+    background: var(--surface);
+    padding: 4px 14px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border);
+  }
+  .rb-hero-shot img { display: block; width: 100%; height: auto; }
+  @media (max-width: 640px) {
+    .rb-hero-shot { margin-top: 44px; }
+    .rb-hero-shot-url { display: none; }
+  }
+
+  .rb-video-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--surface);
+    box-shadow: var(--shadow-card);
+  }
+  .rb-video-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+  }
+  .rb-video-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .rb-sticky-cta { display: none; }
+
+  @media (max-width: 900px) {
+    .rb-compare { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .rb-sticky-cta {
+      display: flex;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 95;
+      background: rgba(6,8,15,0.92);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid var(--border);
+      padding: 12px 16px;
+      justify-content: center;
+    }
+    .rb-sticky-cta .btn { width: 100%; }
+    body { padding-bottom: 76px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header rb-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo/icon.png" alt="Sigacerto Technology" width="64" height="64">
+      <span>Sigacerto Technology</span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Logística</a>
+      <a href="rastboy" class="active">Rastboy</a>
+      <a href="rotacerta-roteirizador">RotaCerta</a>
+      <a href="index.html#cta-final">Contato</a>
+      <a href="https://wa.me/5511993468445?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Rastboy%20para%20o%20meu%20estabelecimento." target="_blank" rel="noopener" class="nav-cta">(11) 99346-8445</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://wa.me/5511993468445?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Rastboy%20para%20o%20meu%20estabelecimento." target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.12.11-1.8-.12-.42-.14-.96-.32-1.65-.62-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.05.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+        <span>(11) 99346-8445</span>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="page-hero" style="position: relative;">
+    <div class="bg-grid"></div>
+    <div class="container">
+      <span class="eyebrow">RASTBOY · UM PRODUTO SIGACERTO TECHNOLOGY</span>
+      <h1>Seu motoboy sumiu no caminho? <span class="text-gradient">Nunca mais.</span></h1>
+      <p>O Rastboy mostra a localização do entregador em tempo real — para você e para o seu cliente, direto no navegador do celular, sem instalar nenhum aplicativo. Acabe com o "cadê meu pedido?" e entregue confiança junto com cada pedido.</p>
+      <div class="hero-actions" style="justify-content: center;">
+        <a href="https://wa.me/5511993468445?text=Ol%C3%A1!%20Quero%20contratar%20o%20Rastboy%20e%20rastrear%20meus%20motoboys." target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.12.11-1.8-.12-.42-.14-.96-.32-1.65-.62-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.05.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+          Quero o Rastboy na minha loja
+        </a>
+        <a href="#como-funciona" class="btn btn-ghost btn-lg">Ver como funciona</a>
+      </div>
+      <div class="hero-pillars">
+        <div>Sem instalar app</div>
+        <div>Rastreamento em tempo real</div>
+        <div>Rotas com várias entregas</div>
+        <div>Link individual por cliente</div>
+      </div>
+
+      <div class="rb-hero-shot" data-reveal>
+        <div class="rb-hero-shot-frame">
+          <div class="rb-hero-shot-bar">
+            <span class="rb-hero-shot-dot red"></span>
+            <span class="rb-hero-shot-dot yellow"></span>
+            <span class="rb-hero-shot-dot green"></span>
+            <span class="rb-hero-shot-url">painel.rastboy.com.br</span>
+          </div>
+          <img src="https://loja-woocommerce.sigacerto.com.br/wp-content/uploads/2026/07/dashboardrastboy-1408x768-1.jpg" alt="Painel do Rastboy mostrando o mapa em tempo real com a localização dos motoboys e o andamento das entregas" width="1408" height="768" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOR -->
+  <section class="section-tight" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">A REALIDADE SEM RASTREAMENTO</span>
+        <h2>Isso já aconteceu no seu Delivery?</h2>
+        <p>Todo estabelecimento de food service que trabalha com entrega própria enfrenta os mesmos problemas — e quase sempre eles custam clientes.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="rb-pain-card">
+          <span class="rb-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>O telefone não para de tocar com clientes perguntando "cadê meu pedido?"</p>
+        </div>
+        <div class="rb-pain-card">
+          <span class="rb-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>O motoboy demora, e ninguém na loja sabe dizer onde ele está.</p>
+        </div>
+        <div class="rb-pain-card">
+          <span class="rb-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Nota baixa e reclamação por atraso, sem nenhuma explicação para dar ao cliente.</p>
+        </div>
+        <div class="rb-pain-card">
+          <span class="rb-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Impossível saber quantos entregadores estão na rua agora mesmo.</p>
+        </div>
+        <div class="rb-pain-card">
+          <span class="rb-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Motoboy erra o endereço ou se perde no caminho, e a entrega atrasa ainda mais.</p>
+        </div>
+        <div class="rb-pain-card">
+          <span class="rb-x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>
+          <p>Dependência de aplicativos de terceiros caros, que não são feitos para a sua operação.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section class="section" id="como-funciona" data-reveal>
+    <div class="container">
+      <div class="ecosystem">
+        <div class="section-head center" style="margin-bottom: 0;">
+          <span class="eyebrow">COMO FUNCIONA</span>
+          <h2>Do pedido pronto até a porta do cliente, em 4 passos</h2>
+          <p>Simples para a loja montar, simples para o motoboy usar, simples para o cliente acompanhar.</p>
+        </div>
+        <div class="flow">
+          <div class="flow-step">
+            <span class="num">1</span>
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M9 19h8a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H7a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2h8"/></svg>
+            </div>
+            <h4>Monte a rota</h4>
+            <p>Escolha o motoboy e cadastre os endereços das entregas, na ordem que a loja definir.</p>
+          </div>
+          <div class="flow-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+          <div class="flow-step">
+            <span class="num">2</span>
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/></svg>
+            </div>
+            <h4>Envie o link</h4>
+            <p>O motoboy abre o link no próprio celular, autoriza a localização e sai para entregar — com um botão que leva direto para a navegação por voz do Google Maps.</p>
+          </div>
+          <div class="flow-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+          <div class="flow-step">
+            <span class="num">3</span>
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h4>Cliente acompanha</h4>
+            <p>Cada pedido gera um link individual: o cliente vê a entrega chegando, em tempo real.</p>
+          </div>
+          <div class="flow-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+          <div class="flow-step">
+            <span class="num">4</span>
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h4>Entrega concluída</h4>
+            <p>O motoboy marca cada parada como entregue conforme avança na rota.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VÍDEO -->
+  <section class="section-tight" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">VEJA NA PRÁTICA</span>
+        <h2>O Rastboy em ação</h2>
+        <p>Assista ao vídeo e veja como fica simples montar a rota, acompanhar o motoboy e entregar tranquilidade para o seu cliente.</p>
+      </div>
+      <div class="rb-video-wrap">
+        <div class="rb-video-frame">
+          <iframe src="https://www.youtube.com/embed/MqZ6S01QC7s" title="Rastboy em ação" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section class="section-tight" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">BENEFÍCIOS PARA OS DOIS LADOS</span>
+        <h2>Feito para quem entrega e para quem recebe</h2>
+        <p>O Rastboy não é só uma ferramenta de gestão — é uma experiência melhor para o seu cliente também.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="rb-benefit-col owner">
+          <span class="rb-tag">Para o dono do estabelecimento</span>
+          <h3>Controle total da entrega, sem sair do painel</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Veja todos os motoboys ativos em um único mapa, em tempo real.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Monte rotas com várias entregas de uma vez, na ordem que a loja decidir.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Reduza drasticamente as ligações e mensagens perguntando pelo pedido.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Identifique atrasos e desvios de rota antes que virem reclamação.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Sem aplicativo para instalar — funciona 100% pelo navegador, loja, motoboy e cliente.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Envie avisos em tempo real e cancele um pedido pontual sem perder o histórico da rota.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Cadastre motoboys e clientes uma vez só — na próxima entrega, o telefone já preenche nome e endereço sozinho.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Exporte relatórios de entregas por período, com hora de saída e de entrega de cada pedido.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Mais organização na operação e mais confiança na reputação da sua marca.</li>
+          </ul>
+        </div>
+        <div class="rb-benefit-col customer">
+          <span class="rb-tag" style="color: var(--accent-3);">Para quem está recebendo o pedido</span>
+          <h3>A mesma tranquilidade dos grandes apps de delivery</h3>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Acompanha a entrega em tempo real pelo próprio celular, sem baixar nada.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Sabe exatamente quando o motoboy vai chegar, sem precisar ligar para perguntar.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Recebe um link individual e seguro, só com as informações do próprio pedido.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Recebe avisos da própria loja em tempo real — se algo mudar, ele sabe na hora, direto na tela.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Mais transparência do início ao fim, sem surpresas nem espera às cegas.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Experiência de app grande de delivery, mas usando diretamente o número da sua loja.</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Mais confiança para pedir de novo — cliente que acompanha a entrega, volta a comprar.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section-tight" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">O QUE VOCÊ RECEBE</span>
+        <h2>Tudo que o Rastboy oferece</h2>
+        <p>Um sistema pensado do zero para pizzarias e food service que fazem entrega própria.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M9 19h8a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H7a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2h8"/></svg></div>
+          <h3>Rotas com múltiplas paradas</h3>
+          <p>O motoboy sai com vários pedidos de uma vez. A loja define a ordem das entregas, sem sugestão automática que ninguém pediu.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg></div>
+          <h3>Mapa em tempo real</h3>
+          <p>Posição do entregador atualizada ao vivo, direto no navegador — sem recarregar a página.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg></div>
+          <h3>Link individual por cliente</h3>
+          <p>Cada pedido gera um link próprio e seguro para o cliente acompanhar a entrega — sem precisar de senha ou cadastro.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Dashboard completo</h3>
+          <p>Um painel só, com todos os motoboys ativos ao mesmo tempo — a operação inteira em uma tela.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="9" x2="22" y2="9"/></svg></div>
+          <h3>Sem instalar aplicativo</h3>
+          <p>Funciona 100% pelo navegador do celular — loja, motoboy e cliente. Zero download, zero atrito.</p>
+        </div>
+        <div class="card">
+          <span class="rb-badge-new">Novidade</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></div>
+          <h3>Navegação com voz, no Google Maps</h3>
+          <p>Um toque leva o motoboy direto para a navegação por voz do Google Maps até o próximo endereço. Ele não se perde, e o pedido não atrasa por causa disso.</p>
+        </div>
+        <div class="card">
+          <span class="rb-badge-new">Novidade</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+          <h3>Avisos em tempo real para o cliente</h3>
+          <p>Trânsito complicado? Pedido vai atrasar um pouco? A loja manda um aviso que aparece na hora na tela do cliente — sem ligação, sem ele ficar no escuro.</p>
+        </div>
+        <div class="card">
+          <span class="rb-badge-new">Novidade</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></div>
+          <h3>Cancelamento sem perder o histórico</h3>
+          <p>Cliente ligou e desistiu do pedido? Cancele só aquela entrega, o motoboy segue pras próximas paradas e o registro fica salvo — nada se perde.</p>
+        </div>
+        <div class="card">
+          <span class="rb-badge-new">Novidade</span>
+          <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="12" y2="11"/></svg></div>
+          <h3>Relatório de entregas por período</h3>
+          <p>Exporte um relatório com os pedidos entregues e cancelados de qualquer data, com hora de saída e de entrega de cada um — dados reais pra gerenciar a operação.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARATIVO -->
+  <section class="section-tight" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">A DIFERENÇA NO DIA A DIA</span>
+        <h2>Sem Rastboy vs. Com Rastboy</h2>
+      </div>
+      <div class="rb-compare">
+        <div class="rb-compare-col lose">
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Sem Rastboy</h4>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Cliente liga perguntando onde está o pedido</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Ninguém na loja sabe onde o motoboy está</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Atraso vira reclamação e nota baixa</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Depende de aplicativo caro de terceiros</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Motoboy se perde ou erra o endereço no caminho</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Cliente espera sem nenhuma informação</li>
+          </ul>
+        </div>
+        <div class="rb-compare-col win">
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Com Rastboy</h4>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Cliente acompanha a entrega sozinho, pelo link</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Loja vê todos os motoboys em tempo real, no mapa</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Atrasos são identificados antes de virar problema</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Sistema próprio, direto no navegador</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Motoboy navega com voz até o endereço certo, sem se perder</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Cliente confia mais e volta a comprar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUE ADQUIRIR -->
+  <section class="section-tight" data-reveal>
+    <div class="container">
+      <div class="grid grid-2" style="align-items: center; gap: 56px;">
+        <div>
+          <span class="eyebrow">POR QUE TER UM RASTREADOR DE MOTOBOYS</span>
+          <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin-top: 18px;">Rastrear a entrega não é luxo, é o novo padrão</h2>
+          <p style="color: var(--text-muted); margin-top: 18px; font-size: 1.05rem;">Quem já pediu comida por um app grande se acostumou a acompanhar a entrega em tempo real. Quando a sua pizzaria não oferece isso, o cliente sente a diferença — e a concorrência que já tem rastreamento sai na frente.</p>
+        </div>
+        <ul class="rb-why-list">
+          <li>
+            <span class="rb-num">1</span>
+            <p><strong>Reduz o volume de ligações</strong> perguntando "cadê meu pedido?", liberando a equipe para focar em vender e produzir.</p>
+          </li>
+          <li>
+            <span class="rb-num">2</span>
+            <p><strong>Aumenta a confiança do cliente</strong>, que passa a enxergar a sua loja com o mesmo profissionalismo dos grandes apps de delivery.</p>
+          </li>
+          <li>
+            <span class="rb-num">3</span>
+            <p><strong>Dá visibilidade real da operação</strong>: quantos motoboys estão na rua, quem está atrasado e onde cada um está agora.</p>
+          </li>
+          <li>
+            <span class="rb-num">4</span>
+            <p><strong>Melhora a avaliação do seu negócio</strong>, porque boa parte das reclamações de delivery vem da falta de informação sobre o atraso.</p>
+          </li>
+          <li>
+            <span class="rb-num">5</span>
+            <p><strong>Fideliza quem já compra de você</strong>: cliente que acompanha a entrega do início ao fim confia mais e pede de novo.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTIMENTO / PLANO -->
+  <section class="section-tight" id="plano" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">INVESTIMENTO</span>
+        <h2>Planos simples, sem letra miúda</h2>
+        <p>Preço fechado, sem taxa escondida e sem contrato de fidelidade. Você contrata quando quiser e cancela quando quiser.</p>
+      </div>
+      <div class="rb-price-wrap">
+        <div class="rb-price-grid">
+          <div class="price-card">
+            <span class="price-badge">Plano Start</span>
+            <h3>Plano Rastboy Start</h3>
+            <div class="price">R$ 169,90<span>/mês</span></div>
+            <p class="price-note">Mensalidade via boleto bancário</p>
+            <div class="rb-setup-box">
+              <span class="rb-setup-tag">Pagamento único na contratação</span>
+              <div class="rb-setup-price">R$ 569,90 <small>em até 12x sem juros no cartão</small></div>
+              <p class="rb-setup-caption">Cobre toda a ativação do seu Rastboy:</p>
+              <div class="rb-setup-includes">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Configuração</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Instalação</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Treinamento da equipe</span>
+              </div>
+            </div>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Implantação e configuração completa do Rastboy para a sua operação</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hospedagem de alta velocidade inclusa na mensalidade</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Suporte técnico de segunda a sexta, das 8h às 17h</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sem fidelidade: cancele quando quiser, sem multa</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>250 entregas no mês, contadas pelo roteiro criado</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Acesso para 1 Administrador, 1 Operador e cliente final com 1 acesso no link</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Pacote adicional de 500 entregas por R$ 49,90</li>
+            </ul>
+            <a href="https://loja-woocommerce.sigacerto.com.br/shop/gfood-e-adicionais/rastboy-%c2%b7-plano-start-sigacerto-em-ate-12x-sem-juros/" target="_blank" rel="noopener" class="btn btn-primary btn-block">
+              Quero contratar o plano Rastboy Start
+            </a>
+            <p class="price-note">Entrega em até 5 dias úteis</p>
+          </div>
+
+          <div class="price-card featured">
+            <span class="price-badge">Sem fidelidade</span>
+            <h3>Plano Rastboy Essential</h3>
+            <div class="price">R$ 249,90<span>/mês</span></div>
+            <p class="price-note">Mensalidade via boleto bancário</p>
+            <div class="rb-setup-box">
+              <span class="rb-setup-tag">Pagamento único na contratação</span>
+              <div class="rb-setup-price">R$ 699,90 <small>em até 12x sem juros no cartão</small></div>
+              <p class="rb-setup-caption">Cobre toda a ativação do seu Rastboy:</p>
+              <div class="rb-setup-includes">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Configuração</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Instalação</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Treinamento da equipe</span>
+              </div>
+            </div>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Implantação e configuração completa do Rastboy para a sua operação</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hospedagem de alta velocidade inclusa na mensalidade</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Suporte técnico de segunda a sexta, das 8h às 17h</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sem fidelidade: cancele quando quiser, sem multa</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>1000 entregas no mês, contadas pelo roteiro criado</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Acesso para 1 Administrador, 1 Operador e cliente final com 1 acesso no link</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Pacote adicional de 500 entregas por R$ 49,90</li>
+            </ul>
+            <a href="https://loja-woocommerce.sigacerto.com.br/shop/gfood-e-adicionais/rastboy-%c2%b7-plano-essential-sigacerto-em-ate-12x-sem-juros-copy/" target="_blank" rel="noopener" class="btn btn-primary btn-block">
+              Quero contratar o plano Rastboy Essential
+            </a>
+            <p class="price-note">Entrega em até 5 dias úteis</p>
+          </div>
+
+          <div class="price-card">
+            <span class="price-badge">Plano TOP</span>
+            <h3>Plano Rastboy TOP</h3>
+            <div class="price">R$ 319,90<span>/mês</span></div>
+            <p class="price-note">Mensalidade via boleto bancário</p>
+            <div class="rb-setup-box">
+              <span class="rb-setup-tag">Pagamento único na contratação</span>
+              <div class="rb-setup-price">R$ 769,90 <small>em até 12x sem juros no cartão</small></div>
+              <p class="rb-setup-caption">Cobre toda a ativação do seu Rastboy:</p>
+              <div class="rb-setup-includes">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Configuração</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Instalação</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Treinamento da equipe</span>
+              </div>
+            </div>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Implantação e configuração completa do Rastboy para a sua operação</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Hospedagem de alta velocidade inclusa na mensalidade</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Suporte técnico de segunda a sexta, das 8h às 17h</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Sem fidelidade: cancele quando quiser, sem multa</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>2000 entregas no mês, contadas pelo roteiro criado</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Acesso para 2 Administradores, 2 Operadores e cliente final com 1 acesso no link</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Pacote adicional de 500 entregas por R$ 49,90</li>
+            </ul>
+            <a href="https://loja-woocommerce.sigacerto.com.br/shop/gfood-e-adicionais/rastboy-%c2%b7-um-produto-sigacerto-technology/" target="_blank" rel="noopener" class="btn btn-primary btn-block">
+              Quero contratar o Plano Rastboy Top
+            </a>
+            <p class="price-note">Entrega em até 5 dias úteis</p>
+          </div>
+        </div>
+
+        <div class="rb-trial">
+          <span class="rb-trial-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
+            TESTE GRÁTIS POR 2 DIAS
+          </span>
+          <h4>Demonstramos a solução completa, solicite sem compromisso.</h4>
+          <p>Sem cartão de crédito e sem compromisso: são <strong>20 roteiros</strong> (entregas) liberados para você rodar o Rastboy na sua operação de verdade — e ver, com os seus próprios olhos, como os seus clientes vão adorar acompanhar a entrega em tempo real.</p>
+          <a href="https://wa.me/5511993468445?text=Ol%C3%A1!%20Quero%20testar%20o%20Rastboy%20gr%C3%A1tis%20por%202%20dias." target="_blank" rel="noopener" class="btn btn-whatsapp btn-block">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.12.11-1.8-.12-.42-.14-.96-.32-1.65-.62-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.05.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+            Quero testar e ver como funciona
+          </a>
+        </div>
+
+        <p class="rb-price-foot">Mensalidade 100% via boleto bancário, sem taxa de cartão. O pagamento único de ativação (configuração, instalação e treinamento) pode ser parcelado em até 12x sem juros no cartão de crédito. Sem contrato de permanência.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-tight" data-reveal>
+    <div class="container" style="max-width: 820px;">
+      <div class="section-head center">
+        <span class="eyebrow">PERGUNTAS FREQUENTES</span>
+        <h2>Tire suas dúvidas sobre o Rastboy</h2>
+      </div>
+
+      <details class="rb-faq-item" open>
+        <summary>O motoboy precisa instalar algum aplicativo?
+          <span class="rb-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Não. O Rastboy funciona direto no navegador do celular do motoboy. Ele só precisa abrir o link recebido e autorizar o compartilhamento de localização.</p>
+      </details>
+
+      <details class="rb-faq-item">
+        <summary>Meu cliente precisa criar conta ou baixar algum app?
+          <span class="rb-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Não. Cada pedido gera um link individual, exclusivo do cliente, que abre direto no navegador e mostra a entrega em tempo real — sem senha e sem cadastro.</p>
+      </details>
+
+      <details class="rb-faq-item">
+        <summary>Quantos motoboys o Rastboy consegue rastrear ao mesmo tempo?
+          <span class="rb-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Quantos a sua operação precisar. O dashboard mostra todos os entregadores ativos ao mesmo tempo, cada um com sua rota, no mesmo mapa.</p>
+      </details>
+
+      <details class="rb-faq-item">
+        <summary>O motoboy pode sair com mais de um pedido por vez?
+          <span class="rb-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Sim. A loja monta a rota com várias paradas e define a ordem das entregas. O motoboy vai marcando cada pedido como entregue conforme avança.</p>
+      </details>
+
+      <details class="rb-faq-item">
+        <summary>O motoboy tem apoio de navegação enquanto dirige?
+          <span class="rb-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Sim. Um botão na própria tela do Rastboy leva direto para a navegação por voz do Google Maps até o próximo endereço da rota. Ele não precisa sair procurando o endereço em outro lugar nem se perder no caminho.</p>
+      </details>
+
+      <details class="rb-faq-item">
+        <summary>Dá para cancelar um pedido depois que o motoboy já saiu para entregar?
+          <span class="rb-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Sim. Você cancela só aquele pedido específico, o motoboy segue normalmente para as próximas paradas da rota, e o cancelamento fica registrado no histórico — nada se perde.</p>
+      </details>
+
+      <details class="rb-faq-item">
+        <summary>Consigo ver relatórios das entregas feitas?
+          <span class="rb-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Sim. É possível exportar um relatório dos pedidos entregues e cancelados em qualquer período, com o horário de saída do motoboy e o horário de entrega (ou cancelamento) de cada um.</p>
+      </details>
+
+      <details class="rb-faq-item">
+        <summary>Por que ter um sistema de rastreamento é importante para a minha pizzaria?
+          <span class="rb-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Porque reduz drasticamente as ligações de "cadê meu pedido", aumenta a confiança do cliente, ajuda a identificar atrasos antes que virem reclamação e melhora a reputação do seu delivery — sem depender de aplicativos de terceiros.</p>
+      </details>
+
+      <details class="rb-faq-item">
+        <summary>É seguro para os dados do meu cliente?
+          <span class="rb-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Sim. Cada link de acompanhamento é individual e mostra apenas as informações da própria entrega, sem expor dados de outros clientes.</p>
+      </details>
+
+      <details class="rb-faq-item">
+        <summary>Quanto custa o Rastboy para o meu negócio?
+          <span class="rb-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Fale com a gente no WhatsApp e receba uma proposta sob medida para o tamanho da sua operação e número de motoboys.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="section" data-reveal>
+    <div class="container">
+      <div class="cta-final">
+        <span class="eyebrow">CHEGOU A HORA</span>
+        <h2 style="margin-top: 18px;">Pronto para acabar com o "cadê meu pedido?"</h2>
+        <p>Fale agora no WhatsApp e veja como o Rastboy pode começar a rodar na sua pizzaria ou food service.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/5511993468445?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20do%20Rastboy%20e%20quero%20uma%20demonstra%C3%A7%C3%A3o." target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.12.11-1.8-.12-.42-.14-.96-.32-1.65-.62-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.05.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+            Falar agora no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo/icon.png" alt="Sigacerto Technology" width="64" height="64">
+          <span>Sigacerto Technology</span>
+        </a>
+        <p>Consultoria em projetos de tecnologia para pequenos e médios empreendedores que querem profissionalizar e escalar o negócio.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="https://sigacerto.com.br/" target="_blank" rel="noopener">Início</a></li>
+          <li><a href="https://sigacerto.com.br/consultoria" target="_blank" rel="noopener">Consultoria</a></li>
+          <li><a href="https://sigacerto.com.br/academia" target="_blank" rel="noopener">Academia (todos os cursos)</a></li>
+          <li><a href="https://sigacerto.com.br/contato" target="_blank" rel="noopener">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Logística</h4>
+        <ul>
+          <li><a href="rastboy" class="active">Rastboy — Delivery de comida</a></li>
+          <li><a href="rotacerta-roteirizador">RotaCerta — Construção e transportadoras</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Soluções</h4>
+        <ul>
+          <li><a href="https://sigacerto.com.br/solucoes" target="_blank" rel="noopener">Ver todas as soluções</a></li>
+          <li><a href="https://sigacerto.com.br/erp-pdv" target="_blank" rel="noopener">ERP &amp; Gestão com PDV</a></li>
+          <li><a href="https://sigacerto.com.br/crm" target="_blank" rel="noopener">CRM Gerenciado em Nuvem</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5511993468445" target="_blank" rel="noopener">WhatsApp: (11) 99346-8445</a></li>
+          <li>Mairinque, SP — atendemos São Roque, Araçariguama, Itu e região</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-tagline">Tecnologia com propósito: transformar pequenos e médios negócios em empresas mais eficientes, organizadas e prontas para crescer.</p>
+      <p>© <span id="rb-year"></span> Sigacerto Technology. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Barra fixa de CTA no mobile -->
+<div class="rb-sticky-cta">
+  <a href="https://wa.me/5511993468445?text=Ol%C3%A1!%20Quero%20contratar%20o%20Rastboy%20e%20rastrear%20meus%20motoboys." target="_blank" rel="noopener" class="btn btn-whatsapp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.12.11-1.8-.12-.42-.14-.96-.32-1.65-.62-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.05.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+    Falar no WhatsApp agora
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O motoboy precisa instalar algum aplicativo?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Não. O Rastboy funciona direto no navegador do celular do motoboy. Ele só precisa abrir o link recebido e autorizar o compartilhamento de localização." }
+    },
+    {
+      "@type": "Question",
+      "name": "Meu cliente precisa criar conta ou baixar algum app?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Não. Cada pedido gera um link individual, exclusivo do cliente, que abre direto no navegador e mostra a entrega em tempo real, sem senha e sem cadastro." }
+    },
+    {
+      "@type": "Question",
+      "name": "Quantos motoboys o Rastboy consegue rastrear ao mesmo tempo?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Quantos a operação precisar. O dashboard mostra todos os entregadores ativos ao mesmo tempo, cada um com sua rota, no mesmo mapa." }
+    },
+    {
+      "@type": "Question",
+      "name": "O motoboy pode sair com mais de um pedido por vez?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim. A loja monta a rota com várias paradas e define a ordem das entregas." }
+    },
+    {
+      "@type": "Question",
+      "name": "O motoboy tem apoio de navegação enquanto dirige?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim. Um botão leva direto para a navegação por voz do Google Maps até o próximo endereço da rota." }
+    },
+    {
+      "@type": "Question",
+      "name": "Dá para cancelar um pedido depois que o motoboy já saiu para entregar?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim. O cancelamento é só daquele pedido, o motoboy segue para as próximas paradas e o registro fica salvo no histórico." }
+    },
+    {
+      "@type": "Question",
+      "name": "Consigo ver relatórios das entregas feitas?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim. É possível exportar um relatório dos pedidos entregues e cancelados em qualquer período, com horário de saída e de entrega de cada um." }
+    },
+    {
+      "@type": "Question",
+      "name": "Por que ter um sistema de rastreamento é importante para a minha pizzaria?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Porque reduz drasticamente as ligações de \"cadê meu pedido\", aumenta a confiança do cliente, ajuda a identificar atrasos antes que virem reclamação e melhora a reputação do seu delivery — sem depender de aplicativos de terceiros." }
+    },
+    {
+      "@type": "Question",
+      "name": "É seguro para os dados do meu cliente?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim. Cada link de acompanhamento é individual e mostra apenas as informações da própria entrega." }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto custa o Rastboy?",
+      "acceptedAnswer": { "@type": "Answer", "text": "O valor é definido conforme o tamanho da operação e o número de motoboys. Fale no WhatsApp para receber uma proposta." }
+    }
+  ]
+}
+</script>
+
+<script src="assets/js/main.js"></script>
+<script>
+  document.getElementById('rb-year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
