@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rastreamento e Roteirização de Entregas | Sigacerto Technology</title>
+<meta name="description" content="Rastreamento em tempo real e roteirização de entregas, direto no navegador, sem aplicativo. Rastboy para delivery de comida e RotaCerta para depósitos e transportadoras — soluções da Sigacerto Technology.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://logistica.sigacerto.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rastreamento e Roteirização de Entregas | Sigacerto Technology">
+<meta property="og:description" content="Rastreamento em tempo real e roteirização de entregas, direto no navegador, sem aplicativo. Rastboy para delivery de comida e RotaCerta para depósitos e transportadoras.">
+<meta property="og:image" content="https://sigacerto.com.br/assets/img/logo/full.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sigacerto.com.br/assets/img/logo/full.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="assets/img/logo/icon.png">
+<style>
+  /* Hub de Logística — estilos específicos desta página */
+
+  .hub-triage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .hub-card {
+    background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .hub-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-card); }
+  .hub-card.rastboy { border-color: rgba(91,108,255,0.3); }
+  .hub-card.rotacerta { border-color: rgba(34,211,238,0.3); }
+
+  .hub-card-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .hub-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+  .hub-card:hover .hub-card-media img { transform: scale(1.05); }
+
+  .hub-card-body { padding: 36px; display: flex; flex-direction: column; flex-grow: 1; }
+  .hub-card-body .eyebrow { margin-bottom: 4px; align-self: flex-start; }
+  .hub-card-body h3 { font-size: 1.5rem; margin-top: 14px; }
+  .hub-card-body .hub-lede { color: var(--text-muted); font-size: 0.98rem; margin-top: 12px; }
+
+  .hub-pain-list { margin: 24px 0 28px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1; }
+  .hub-pain-list li {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: 0.92rem; color: var(--text-muted);
+  }
+  .hub-pain-list li svg { flex-shrink: 0; width: 17px; height: 17px; color: #e04b4b; margin-top: 2px; }
+
+  .hub-card.rotacerta .btn-primary { background: linear-gradient(135deg, #22d3ee 0%, #34e0a1 100%); }
+
+  .hub-faq-item {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .hub-faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .hub-faq-item summary::-webkit-details-marker { display: none; }
+  .hub-faq-icon { flex-shrink: 0; color: var(--accent-2); transition: transform 0.2s ease; }
+  .hub-faq-icon svg { width: 20px; height: 20px; }
+  .hub-faq-item[open] .hub-faq-icon { transform: rotate(45deg); }
+  .hub-faq-item p { padding: 0 24px 22px; color: var(--text-muted); font-size: 0.95rem; }
+
+  .hub-video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .hub-video-card { border: 1px solid var(--border-strong); border-radius: var(--radius-lg); overflow: hidden; background: var(--surface); box-shadow: var(--shadow-card); }
+  .hub-video-card h4 { font-family: var(--font-display); font-size: 1rem; padding: 18px 20px 0; }
+  .hub-video-frame { position: relative; width: 100%; padding-top: 56.25%; margin-top: 14px; }
+  .hub-video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .hub-compare-table th:nth-child(3), .hub-compare-table td:nth-child(3) { font-family: var(--font-display); font-weight: 700; color: var(--accent-2); }
+
+  .hub-final-actions { display: flex; gap: 16px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+
+  .hub-chooser {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    z-index: 90;
+    display: flex; align-items: center; gap: 10px;
+    background: var(--gradient);
+    color: #050810;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 14px 22px;
+    border-radius: var(--radius-full);
+    box-shadow: 0 10px 30px -6px rgba(91,108,255,0.55);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .hub-chooser:hover { transform: translateY(-2px); box-shadow: 0 14px 36px -4px rgba(91,108,255,0.7); }
+  .hub-chooser svg { width: 18px; height: 18px; }
+
+  @media (max-width: 900px) {
+    .hub-triage-grid { grid-template-columns: 1fr; }
+    .hub-video-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .hub-chooser span { display: none; }
+    .hub-chooser { padding: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo/icon.png" alt="Sigacerto Technology" width="64" height="64">
+      <span>Sigacerto Technology</span>
+    </a>
+    <nav class="main-nav">
+      <a href="index.html" class="active">Logística</a>
+      <a href="https://sigacerto.com.br/rastboy" target="_blank" rel="noopener">Rastboy</a>
+      <a href="https://sigacerto.com.br/rotacerta-roteirizador" target="_blank" rel="noopener">RotaCerta</a>
+      <a href="https://sigacerto.com.br/solucoes" target="_blank" rel="noopener">Todas as soluções</a>
+      <a href="https://sigacerto.com.br/contato" target="_blank" rel="noopener">Contato</a>
+      <a href="https://wa.me/5511966021768?text=Ol%C3%A1!%20Vim%20pelo%20hub%20de%20log%C3%ADstica%20da%20Sigacerto%20e%20quero%20saber%20qual%20solu%C3%A7%C3%A3o%20se%20encaixa%20na%20minha%20opera%C3%A7%C3%A3o." target="_blank" rel="noopener" class="nav-cta">Fale com um Consultor</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://wa.me/5511966021768?text=Ol%C3%A1!%20Vim%20pelo%20hub%20de%20log%C3%ADstica%20da%20Sigacerto%20e%20quero%20saber%20qual%20solu%C3%A7%C3%A3o%20se%20encaixa%20na%20minha%20opera%C3%A7%C3%A3o." target="_blank" rel="noopener" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.12.11-1.8-.12-.42-.14-.96-.32-1.65-.62-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.05.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+        Fale com um Consultor
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bg-grid"></div>
+    <div class="container">
+      <div class="hero-inner" style="max-width: 820px; margin: 0 auto; text-align: center;">
+        <span class="eyebrow">SIGACERTO TECHNOLOGY · LOGÍSTICA DE ÚLTIMA MILHA</span>
+        <h1>Sua entrega, rastreada do início ao fim — <span class="text-gradient">para cada tipo de operação</span></h1>
+        <p class="lede" style="margin-inline: auto;">A Sigacerto Technology desenvolve sistemas de rastreamento e roteirização sob medida para o tipo de operação — sem aplicativo, sem hardware extra, direto no navegador. Escolha abaixo o produto feito para o seu negócio.</p>
+        <div class="hero-actions" style="justify-content: center;">
+          <a href="#triagem-rastboy" class="btn btn-primary btn-lg">Tenho uma pizzaria/food service</a>
+          <a href="#triagem-rotacerta" class="btn btn-ghost btn-lg">Tenho depósito/transportadora</a>
+        </div>
+        <div class="hero-pillars">
+          <div>Sem instalar app</div>
+          <div>Rastreamento em tempo real</div>
+          <div>Sem hardware extra</div>
+          <div>Suporte Sigacerto Technology</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRIAGEM -->
+  <section class="section" id="triagem" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">IDENTIFIQUE SUA OPERAÇÃO</span>
+        <h2>Qual dessas dores é a sua?</h2>
+        <p>Dois produtos prontos, cada um pensado para um tipo de operação diferente. Escolha o seu e conheça a solução completa.</p>
+      </div>
+
+      <div class="hub-triage-grid">
+
+        <!-- Card Rastboy -->
+        <div class="hub-card rastboy" id="triagem-rastboy">
+          <div class="hub-card-media">
+            <img src="assets/img/rastboy/dashboard.jpg" alt="Painel do Rastboy mostrando o mapa em tempo real com a localização dos motoboys e o andamento das entregas" loading="lazy" width="1408" height="768">
+          </div>
+          <div class="hub-card-body">
+            <span class="eyebrow">DELIVERY DE COMIDA</span>
+            <h3>Rastboy</h3>
+            <p class="hub-lede">Para pizzarias e food service com entrega própria que precisam acabar com o "cadê meu pedido?".</p>
+            <ul class="hub-pain-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Telefone não para de tocar com clientes perguntando pelo pedido</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Motoboy some no caminho e ninguém na loja sabe onde ele está</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Dependência de aplicativos de terceiros caros e genéricos</li>
+            </ul>
+            <a href="https://sigacerto.com.br/rastboy" target="_blank" rel="noopener" class="btn btn-primary btn-block">
+              Conhecer o Rastboy
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card RotaCerta -->
+        <div class="hub-card rotacerta" id="triagem-rotacerta">
+          <div class="hub-card-media">
+            <img src="assets/img/rotacerta/frota-mapa-tempo-real.jpg" alt="Painel do operador do RotaCerta com cadastro de pedidos por tipo de material e mapa de motoristas ativos em tempo real" loading="lazy" width="1500" height="1000">
+          </div>
+          <div class="hub-card-body">
+            <span class="eyebrow" style="color: var(--accent-2);">CONSTRUÇÃO E TRANSPORTADORAS</span>
+            <h3>RotaCerta Roteirizador</h3>
+            <p class="hub-lede">Para depósitos de material de construção e transportadoras de pequeno e médio porte.</p>
+            <ul class="hub-pain-list">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Motorista se perde em obra sem endereço formal</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Tempo de descarga genérico, sem considerar o tipo de material</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> ERP desatualizado, sem integração com a roteirização</li>
+            </ul>
+            <a href="https://sigacerto.com.br/rotacerta-roteirizador" target="_blank" rel="noopener" class="btn btn-primary btn-block">
+              Conhecer o RotaCerta
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- O QUE OS DOIS TÊM EM COMUM -->
+  <section class="section" data-reveal>
+    <div class="container">
+      <div class="ecosystem">
+        <div class="section-head center" style="margin-bottom: 0;">
+          <span class="eyebrow">AUTORIDADE TÉCNICA</span>
+          <h2>O que os dois sistemas têm em comum</h2>
+          <p>A Sigacerto não vende "um sistema de rastreamento genérico" — desenvolve soluções sob medida para o tipo de operação, com a mesma base sólida por trás.</p>
+        </div>
+        <div class="ecosystem-list">
+          <div class="ecosystem-item">
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div>
+              <h4>Sem aplicativo para instalar</h4>
+              <p>Motoboy ou motorista abre um link e já está rastreando — nada para baixar, nada para configurar.</p>
+            </div>
+          </div>
+          <div class="ecosystem-item">
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div>
+              <h4>Link individual e seguro</h4>
+              <p>Quem recebe acompanha a entrega por um link só dele, sem senha e sem expor dados de outros clientes.</p>
+            </div>
+          </div>
+          <div class="ecosystem-item">
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div>
+              <h4>100% via navegador</h4>
+              <p>Rastreamento em tempo real que funciona no celular de quem entrega e de quem recebe, sem hardware extra.</p>
+            </div>
+          </div>
+          <div class="ecosystem-item">
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div>
+              <h4>Implantação com suporte da Sigacerto</h4>
+              <p>Configuração, treinamento da equipe e suporte técnico — a mesma consultoria por trás dos dois produtos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUE CONFIAR -->
+  <section class="credibility" data-reveal>
+    <div class="container">
+      <span class="eyebrow">POR QUE CONFIAR NA SIGACERTO PARA LOGÍSTICA</span>
+      <h2 style="margin-top: 18px;">Consultoria de tecnologia, não só venda de licença</h2>
+      <p>A Sigacerto Technology já atua com ERP e PDV para pequenas e médias empresas — o rastreamento e a roteirização de entregas são uma extensão natural desse trabalho, com o mesmo suporte próximo e o mesmo compromisso de sempre.</p>
+      <div class="credibility-marks">
+        <span>ERP &amp; PDV para PMEs</span>
+        <span>Suporte local: Mairinque · São Roque · Araçariguama · Itu</span>
+        <span>Atendimento remoto em todo o Brasil</span>
+        <span>Consultoria em tecnologia, não só licença</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- VÍDEOS -->
+  <section class="section" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">VEJA NA PRÁTICA</span>
+        <h2>Os dois sistemas em ação</h2>
+        <p>Assista aos vídeos de demonstração de cada produto e veja como fica simples rastrear a entrega do início ao fim.</p>
+      </div>
+      <div class="hub-video-grid">
+        <div class="hub-video-card">
+          <h4>Rastboy — rastreamento para delivery de comida</h4>
+          <div class="hub-video-frame">
+            <iframe src="https://www.youtube.com/embed/MqZ6S01QC7s" title="Rastboy em ação" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="hub-video-card">
+          <h4>RotaCerta — roteirização para construção e transportadoras</h4>
+          <div class="hub-video-frame">
+            <iframe src="https://www.youtube.com/embed/kg2aDQE6BiQ" title="RotaCerta Roteirizador — demonstração" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARATIVO -->
+  <section class="section-tight" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">AINDA NÃO DECIDIU?</span>
+        <h2>Comparativo rápido: tipo de operação → produto indicado</h2>
+      </div>
+      <div class="plans-table-wrap">
+        <table class="plans-table hub-compare-table">
+          <thead>
+            <tr>
+              <th>Tipo de operação</th>
+              <th>Dor comum</th>
+              <th class="featured-col">Produto indicado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pizzaria, hamburgueria ou food service com entrega própria</td>
+              <td>"Cadê meu pedido?" e motoboy sem rastreio</td>
+              <td>Rastboy</td>
+            </tr>
+            <tr>
+              <td>Depósito de material de construção</td>
+              <td>Motorista perdido em obra sem endereço formal</td>
+              <td>RotaCerta</td>
+            </tr>
+            <tr>
+              <td>Transportadora de pequeno ou médio porte</td>
+              <td>Tempo de descarga não calculado e ERP desatualizado</td>
+              <td>RotaCerta</td>
+            </tr>
+            <tr>
+              <td>Empresa com food service e transporte de carga ao mesmo tempo</td>
+              <td>As duas dores ao mesmo tempo, em operações diferentes</td>
+              <td>Rastboy + RotaCerta</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-tight" data-reveal>
+    <div class="container" style="max-width: 820px;">
+      <div class="section-head center">
+        <span class="eyebrow">PERGUNTAS FREQUENTES</span>
+        <h2>Dúvidas sobre o hub de logística</h2>
+      </div>
+
+      <details class="hub-faq-item" open>
+        <summary>Vocês atendem os dois tipos de operação ao mesmo tempo?
+          <span class="hub-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Sim. Se a sua empresa tem, por exemplo, um food service com entrega própria e também transporta carga, dá para contratar o Rastboy e o RotaCerta juntos — cada um resolvendo a dor específica da sua operação.</p>
+      </details>
+
+      <details class="hub-faq-item">
+        <summary>Qual a diferença entre o Rastboy e o RotaCerta?
+          <span class="hub-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>O Rastboy foi feito para pizzarias e food service que entregam com motoboy próprio, com foco em rotas simples de delivery. O RotaCerta foi feito para depósitos de material de construção e transportadoras, com geolocalização de obra sem endereço formal, tempo de descarga por tipo de material e integração com ERP. Os dois usam a mesma base de rastreamento em tempo real via navegador, sem aplicativo.</p>
+      </details>
+
+      <details class="hub-faq-item">
+        <summary>Não sei qual dos dois se encaixa na minha operação, como decido?
+          <span class="hub-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Use o comparativo desta página ou fale direto com a gente no WhatsApp: em poucos minutos identificamos o tipo da sua operação e indicamos o produto certo, sem compromisso.</p>
+      </details>
+
+      <details class="hub-faq-item">
+        <summary>Preciso contratar os dois produtos para ter suporte da Sigacerto?
+          <span class="hub-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Não. Cada produto é vendido e implantado separadamente, com o seu próprio plano e suporte técnico. O hub existe só para te ajudar a identificar qual dos dois é o certo para a sua operação.</p>
+      </details>
+
+      <details class="hub-faq-item">
+        <summary>Os dois sistemas têm planos e preços parecidos?
+          <span class="hub-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Cada produto tem sua própria tabela de planos, pensada para o volume e o tipo de operação de cada segmento. Os valores completos e as condições estão nas páginas do Rastboy e do RotaCerta.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="section" data-reveal>
+    <div class="container">
+      <div class="cta-final">
+        <span class="eyebrow">NÃO SABE QUAL SOLUÇÃO SE ENCAIXA?</span>
+        <h2 style="margin-top: 18px;">Fale com a gente e a gente te indica</h2>
+        <p>Conte pra gente como funciona a sua operação — em poucos minutos você já sai sabendo se o Rastboy, o RotaCerta ou os dois juntos são o caminho certo.</p>
+        <div class="hub-final-actions">
+          <a href="https://wa.me/5511966021768?text=Ol%C3%A1!%20Vim%20pelo%20hub%20de%20log%C3%ADstica%20da%20Sigacerto%20e%20quero%20saber%20qual%20solu%C3%A7%C3%A3o%20se%20encaixa%20na%20minha%20opera%C3%A7%C3%A3o." target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.12.11-1.8-.12-.42-.14-.96-.32-1.65-.62-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.14.07.14.12.31.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.05.17-.19.72-.84.92-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.91.91.29.14.48.21.55.33.07.12.07.7-.17 1.38Z"/></svg>
+            Falar com a Sigacerto no WhatsApp
+          </a>
+          <a href="#triagem" class="btn btn-ghost btn-lg">Ver o comparativo de novo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo/icon.png" alt="Sigacerto Technology" width="64" height="64">
+          <span>Sigacerto Technology</span>
+        </a>
+        <p>Consultoria em projetos de tecnologia para pequenos e médios empreendedores que querem profissionalizar e escalar o negócio.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="https://sigacerto.com.br/" target="_blank" rel="noopener">Início</a></li>
+          <li><a href="https://sigacerto.com.br/consultoria" target="_blank" rel="noopener">Consultoria</a></li>
+          <li><a href="https://sigacerto.com.br/academia" target="_blank" rel="noopener">Academia (todos os cursos)</a></li>
+          <li><a href="https://sigacerto.com.br/contato" target="_blank" rel="noopener">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Logística</h4>
+        <ul>
+          <li><a href="https://sigacerto.com.br/rastboy" target="_blank" rel="noopener">Rastboy — Delivery de comida</a></li>
+          <li><a href="https://sigacerto.com.br/rotacerta-roteirizador" target="_blank" rel="noopener">RotaCerta — Construção e transportadoras</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Soluções</h4>
+        <ul>
+          <li><a href="https://sigacerto.com.br/solucoes" target="_blank" rel="noopener">Ver todas as soluções</a></li>
+          <li><a href="https://sigacerto.com.br/erp-pdv" target="_blank" rel="noopener">ERP &amp; Gestão com PDV</a></li>
+          <li><a href="https://sigacerto.com.br/crm" target="_blank" rel="noopener">CRM Gerenciado em Nuvem</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5511966021768" target="_blank" rel="noopener">WhatsApp: (11) 96602-1768</a></li>
+          <li>Mairinque, SP — atendemos São Roque, Araçariguama, Itu e região</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-tagline">Tecnologia com propósito: transformar pequenos e médios negócios em empresas mais eficientes, organizadas e prontas para crescer.</p>
+      <p>&copy; <span id="hub-year"></span> Sigacerto Technology. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#triagem" class="hub-chooser" aria-label="Não sei qual solução escolher">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 2-3 4"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+  <span>Não sei qual escolher</span>
+</a>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Vocês atendem os dois tipos de operação ao mesmo tempo?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim. Se a empresa tem food service com entrega própria e também transporta carga, dá para contratar o Rastboy e o RotaCerta juntos, cada um resolvendo a dor específica da operação." }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual a diferença entre o Rastboy e o RotaCerta?",
+      "acceptedAnswer": { "@type": "Answer", "text": "O Rastboy foi feito para pizzarias e food service com entrega própria. O RotaCerta foi feito para depósitos de material de construção e transportadoras, com geolocalização de obra sem endereço formal e integração com ERP." }
+    },
+    {
+      "@type": "Question",
+      "name": "Não sei qual dos dois se encaixa na minha operação, como decido?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Use o comparativo da página ou fale no WhatsApp com a Sigacerto: em poucos minutos identificamos o tipo da operação e indicamos o produto certo." }
+    },
+    {
+      "@type": "Question",
+      "name": "Preciso contratar os dois produtos para ter suporte da Sigacerto?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Não. Cada produto é vendido e implantado separadamente, com seu próprio plano e suporte técnico." }
+    },
+    {
+      "@type": "Question",
+      "name": "Os dois sistemas têm planos e preços parecidos?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Cada produto tem sua própria tabela de planos, pensada para o volume e o tipo de operação de cada segmento." }
+    }
+  ]
+}
+</script>
+
+<script src="assets/js/main.js"></script>
+<script>
+  document.getElementById('hub-year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
