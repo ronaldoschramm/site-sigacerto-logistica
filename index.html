@@ -3,14 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rastreamento e Roteirização de Entregas | Sigacerto Technology</title>
-<meta name="description" content="Rastreamento em tempo real e roteirização de entregas, direto no navegador, sem aplicativo. Rastboy para delivery de comida e RotaCerta para depósitos e transportadoras — soluções da Sigacerto Technology.">
+<title>Rastreamento e Roteirização de Entregas em Sorocaba, Itu e Mairinque | Sigacerto Technology</title>
+<meta name="description" content="Rastreamento de motoboys e roteirização de cargas em tempo real, direto no navegador, sem aplicativo. Rastboy e RotaCerta atendem Sorocaba, Itu, Mairinque, São Roque e Araçariguama — soluções da Sigacerto Technology.">
+<meta name="keywords" content="rastreamento de motoboy, roteirização de entregas, sistema de rastreamento de entregadores, roteirizador de cargas, logística Sorocaba, logística Itu, logística Mairinque, logística São Roque, logística Araçariguama">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://logistica.sigacerto.com.br/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Rastreamento e Roteirização de Entregas | Sigacerto Technology">
-<meta property="og:description" content="Rastreamento em tempo real e roteirização de entregas, direto no navegador, sem aplicativo. Rastboy para delivery de comida e RotaCerta para depósitos e transportadoras.">
+<meta property="og:title" content="Rastreamento e Roteirização de Entregas em Sorocaba, Itu e Mairinque | Sigacerto Technology">
+<meta property="og:description" content="Rastreamento de motoboys e roteirização de cargas em tempo real, direto no navegador, sem aplicativo. Rastboy e RotaCerta atendem Sorocaba, Itu, Mairinque, São Roque e Araçariguama.">
 <meta property="og:image" content="https://logistica.sigacerto.com.br/assets/img/logo/full.png">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Sigacerto Technology — Logística">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://logistica.sigacerto.com.br/assets/img/logo/full.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +21,77 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="icon" href="assets/img/logo/icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://logistica.sigacerto.com.br/#website",
+      "name": "Sigacerto Technology — Logística",
+      "url": "https://logistica.sigacerto.com.br/",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://logistica.sigacerto.com.br/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://logistica.sigacerto.com.br/#organization",
+      "name": "Sigacerto Technology",
+      "url": "https://logistica.sigacerto.com.br/",
+      "logo": "https://logistica.sigacerto.com.br/assets/img/logo/icon.png",
+      "image": "https://logistica.sigacerto.com.br/assets/img/logo/full.png",
+      "description": "Consultoria de tecnologia especializada em rastreamento de entregadores e roteirização de cargas para pequenas e médias empresas.",
+      "sameAs": ["https://sigacerto.com.br/"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+55-11-96602-1768",
+        "contactType": "sales",
+        "areaServed": "BR",
+        "availableLanguage": "Portuguese"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Mairinque" },
+        { "@type": "City", "name": "São Roque" },
+        { "@type": "City", "name": "Sorocaba" },
+        { "@type": "City", "name": "Araçariguama" },
+        { "@type": "City", "name": "Itu" }
+      ]
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "Rastboy — Rastreamento de motoboys e delivery",
+      "description": "Rastreamento em tempo real de motoboys, roteiro com múltiplas entregas e link de acompanhamento para o cliente. Ideal para pizzarias e food service com entrega própria.",
+      "url": "https://logistica.sigacerto.com.br/rastboy"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "name": "RotaCerta — Roteirização de cargas para transportadoras",
+      "description": "Roteirizador para transportadoras e depósitos de material de construção: geolocalização de obra sem endereço formal, tempo de descarga por tipo de material e integração com ERP.",
+      "url": "https://logistica.sigacerto.com.br/rotacerta-roteirizador"
+    },
+    {
+      "@type": "ItemList",
+      "name": "Soluções de logística Sigacerto Technology",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Rastboy",
+          "url": "https://logistica.sigacerto.com.br/rastboy"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "RotaCerta Roteirizador",
+          "url": "https://logistica.sigacerto.com.br/rotacerta-roteirizador"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 <style>
   /* Hub de Logística — estilos específicos desta página */
 
@@ -108,9 +182,21 @@
   .hub-chooser:hover { transform: translateY(-2px); box-shadow: 0 14px 36px -4px rgba(91,108,255,0.7); }
   .hub-chooser svg { width: 18px; height: 18px; }
 
+  .hub-cities-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .hub-city-card {
+    padding: 22px 18px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    text-align: center;
+  }
+  .hub-city-card h4 { font-family: var(--font-display); font-size: 1rem; color: var(--accent-2); }
+  .hub-city-card p { margin-top: 8px; font-size: 0.85rem; color: var(--text-muted); }
+
   @media (max-width: 900px) {
     .hub-triage-grid { grid-template-columns: 1fr; }
     .hub-video-grid { grid-template-columns: 1fr; }
+    .hub-cities-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
     .hub-chooser span { display: none; }
@@ -277,9 +363,27 @@
       <p>A Sigacerto Technology já atua com ERP e PDV para pequenas e médias empresas — o rastreamento e a roteirização de entregas são uma extensão natural desse trabalho, com o mesmo suporte próximo e o mesmo compromisso de sempre.</p>
       <div class="credibility-marks">
         <span>ERP &amp; PDV para PMEs</span>
-        <span>Suporte local: Mairinque · São Roque · Araçariguama · Itu</span>
+        <span>Suporte local: Mairinque · São Roque · Sorocaba · Araçariguama · Itu</span>
         <span>Atendimento remoto em todo o Brasil</span>
         <span>Consultoria em tecnologia, não só licença</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÁREA DE ATENDIMENTO -->
+  <section class="section-tight" id="area-de-atendimento" data-reveal>
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">ONDE ATENDEMOS</span>
+        <h2>Rastreamento e roteirização de entregas na região de Sorocaba</h2>
+        <p>A Sigacerto Technology fica em Mairinque, no coração da região de Sorocaba, e leva o Rastboy e o RotaCerta para pizzarias, food service, depósitos de material de construção e transportadoras de toda a região — com implantação presencial e suporte próximo, não só um sistema entregue à distância.</p>
+      </div>
+      <div class="hub-cities-grid">
+        <div class="hub-city-card"><h4>Sorocaba</h4><p>Transportadoras, depósitos de material de construção e food service de todos os portes rastreando entregas em tempo real.</p></div>
+        <div class="hub-city-card"><h4>Itu</h4><p>Roteirização de cargas para depósitos e transportadoras que atendem obras e condomínios da cidade e região.</p></div>
+        <div class="hub-city-card"><h4>Mairinque</h4><p>Sede da Sigacerto Technology — suporte e implantação presencial para pizzarias, food service e transportadoras locais.</p></div>
+        <div class="hub-city-card"><h4>São Roque</h4><p>Rastreamento de motoboys para o polo gastronômico e roteirização para transportadoras da cidade.</p></div>
+        <div class="hub-city-card"><h4>Araçariguama</h4><p>Sistemas de rastreamento e roteirização sob medida para o comércio e a logística local.</p></div>
       </div>
     </div>
   </section>
@@ -394,6 +498,13 @@
         </summary>
         <p>Cada produto tem sua própria tabela de planos, pensada para o volume e o tipo de operação de cada segmento. Os valores completos e as condições estão nas páginas do Rastboy e do RotaCerta.</p>
       </details>
+
+      <details class="hub-faq-item">
+        <summary>Vocês atendem empresas em Sorocaba, Itu, Mairinque, São Roque e Araçariguama?
+          <span class="hub-faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p>Sim. A Sigacerto Technology é sediada em Mairinque e atende com suporte próximo toda a região — Sorocaba, Itu, São Roque e Araçariguama —, além de atendimento remoto para empresas de todo o Brasil.</p>
+      </details>
     </div>
   </section>
 
@@ -455,7 +566,7 @@
         <h4>Contato</h4>
         <ul>
           <li><a href="https://wa.me/5511966021768" target="_blank" rel="noopener">WhatsApp: (11) 96602-1768</a></li>
-          <li>Mairinque, SP — atendemos São Roque, Araçariguama, Itu e região</li>
+          <li>Mairinque, SP — atendemos Sorocaba, São Roque, Itu, Araçariguama e região</li>
         </ul>
       </div>
     </div>
@@ -500,6 +611,11 @@
       "@type": "Question",
       "name": "Os dois sistemas têm planos e preços parecidos?",
       "acceptedAnswer": { "@type": "Answer", "text": "Cada produto tem sua própria tabela de planos, pensada para o volume e o tipo de operação de cada segmento." }
+    },
+    {
+      "@type": "Question",
+      "name": "Vocês atendem empresas em Sorocaba, Itu, Mairinque, São Roque e Araçariguama?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim. A Sigacerto Technology é sediada em Mairinque e atende com suporte próximo toda a região — Sorocaba, Itu, São Roque e Araçariguama —, além de atendimento remoto para empresas de todo o Brasil." }
     }
   ]
 }

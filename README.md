@@ -10,6 +10,8 @@ Conteúdo baseado em [`projeto-hub-logistica (1).md`](./projeto-hub-logistica%20
 index.html                          → hub (home)
 rastboy.html                        → página do Rastboy (serve em /rastboy)
 rotacerta-roteirizador.html         → página do RotaCerta (serve em /rotacerta-roteirizador)
+robots.txt                          → libera indexação e aponta para o sitemap
+sitemap.xml                         → sitemap XML das 3 páginas do site
 assets/css/style.css                → design system da Sigacerto Technology (copiado do site principal, sem alterações)
 assets/js/main.js                   → scripts compartilhados (scroll do header, menu mobile, reveal on scroll)
 assets/img/logo/                    → logo Sigacerto Technology
@@ -17,6 +19,18 @@ assets/img/rastboy/                 → print do painel do Rastboy usado no card
 assets/img/rotacerta/               → prints dos painéis do RotaCerta usados nos cards do hub
 assets/img/rotacerta-roteirizador/  → prints usados dentro da própria página do RotaCerta
 ```
+
+## SEO
+
+O hub e as duas páginas de produto (Rastboy e RotaCerta) foram otimizados para busca orgânica, com foco na região de Sorocaba (Mairinque, São Roque, Sorocaba, Araçariguama, Itu):
+
+- **`robots.txt` e `sitemap.xml`** na raiz do site, para facilitar o crawling e a indexação pelo Google.
+- **Dados estruturados (JSON-LD)** em todas as páginas: `Organization`, `WebSite`, `SiteNavigationElement` e `ItemList` no hub (para reforçar a arquitetura do site perante o Google — sitelinks no resultado de busca são gerados algoritmicamente e não podem ser forçados, mas dependem justamente de uma navegação clara e bem marcada como esta); `Service` com `areaServed` nas 5 cidades em cada página de produto; `BreadcrumbList` em todas as páginas; `FAQPage` mantido e ampliado com perguntas sobre a área de atendimento.
+- **Título, meta description e meta keywords** de cada página reescritos para incluir a região (Sorocaba, Itu, Mairinque) junto da proposta de valor de cada produto.
+- **Seção "Onde atendemos"** no hub, citando as 5 cidades com uma frase específica de contexto para cada uma — bom para relevância local e para aparecer em buscas do tipo "rastreamento de motoboy em Sorocaba" ou "roteirizador para transportadora em Itu".
+- Rodapé e FAQ de todas as páginas atualizados para citar Sorocaba (antes só aparecia São Roque, Araçariguama e Itu).
+
+Vale complementar isso, fora do escopo deste repositório, com: cadastro no Google Business Profile de Mairinque, obtenção de backlinks/citações locais (guias comerciais de Sorocaba/Itu), e o cadastro do `sitemap.xml` no Google Search Console.
 
 As URLs sem `.html` (ex. `/rastboy`) funcionam pelo comportamento padrão do Cloudflare Workers (`auto-trailing-slash`): uma requisição a `/rastboy` serve `rastboy.html` diretamente, sem redirecionamento.
 
